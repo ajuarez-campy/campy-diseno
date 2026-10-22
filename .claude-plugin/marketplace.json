@@ -1,0 +1,14 @@
+{
+  "name": "campy-skills",
+  "description": "Skills de Claude Code para trabajar en Campy.",
+  "owner": {
+    "name": "ajuarez-campy"
+  },
+  "plugins": [
+    {
+      "name": "campy-diseno",
+      "source": ".",
+      "description": "Sistema de diseño de Campy (web de Operators y Providers, y Worker App) con autoevaluación contra el código y registro de aprendizajes."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "campy-diseno",
+  "description": "Sistema de diseño de Campy (web de Operators y Providers, y Worker App) con autoevaluación contra el código y registro de aprendizajes.",
+  "author": { "name": "ajuarez-campy" },
+  "repository": "https://github.com/ajuarez-campy/campy-diseno"
+}
