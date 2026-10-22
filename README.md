@@ -18,12 +18,14 @@ Es una skill que **se autoevalúa y aprende**:
 ### Modo editable (recomendado: así la skill puede aprender)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ajuarez-campy/campy-diseno/main/install.sh | bash
+gh repo clone ajuarez-campy/campy-diseno ~/.claude/campy-diseno && ~/.claude/campy-diseno/install.sh
 ```
 
-Clona el repo en `~/.claude/campy-diseno` y enlaza `~/.claude/skills/campy-diseno` a la skill. Los aprendizajes
-quedan en ese clon y se suben con `git commit` + `git push`. Para actualizar: volver a correr el instalador (hace
-`git pull`). Como el repo es privado, `git` necesita acceso a GitHub (`gh auth login` y `gh auth setup-git`, o SSH).
+Deja el clon en `~/.claude/campy-diseno` y enlaza `~/.claude/skills/campy-diseno` a la skill (si había una copia
+suelta, la guarda como respaldo fuera de `~/.claude/skills`). Los aprendizajes
+quedan en ese clon y se suben con `git commit` + `git push`. Para actualizar: `git -C ~/.claude/campy-diseno pull`. Como
+el repo es privado, hace falta acceso a GitHub (`gh auth login` y `gh auth setup-git`, o SSH) y que el dueño te sume
+como colaborador.
 
 ### Como plugin (solo usar)
 
