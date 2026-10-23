@@ -31,3 +31,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 
 - 2026-10-23 · [incorporado] · Con «Mi Área en camino» no se muestra nada más en la pestaña (quedaba el chip «Mucama» suelto arriba: «está horrible») · Agustín · mobile.md › Composición › «En camino»
 - 2026-10-23 · [incorporado] · Las barras de avance (la del ciclo en el Inicio y toda barra nueva) van del navy del fondo del botón del QR (`CampyColors.navy`), no del azul · Agustín · mobile.md › Radios › «Barra de avance (color)»
+- 2026-10-23 · [incorporado] · El número del porcentaje de una barra («93%» de «Mi estadía») va del mismo navy que la barra · Agustín · mobile.md › «Barra de avance (color)»
