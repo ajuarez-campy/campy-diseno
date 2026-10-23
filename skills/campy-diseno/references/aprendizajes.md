@@ -33,3 +33,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-23 · [incorporado] · Las barras de avance (la del ciclo en el Inicio y toda barra nueva) van del navy del fondo del botón del QR (`CampyColors.navy`), no del azul · Agustín · mobile.md › Radios › «Barra de avance (color)»
 - 2026-10-23 · [incorporado] · El número del porcentaje de una barra («93%» de «Mi estadía») va del mismo navy que la barra · Agustín · mobile.md › «Barra de avance (color)»
 - 2026-10-23 · [incorporado] · Mi QR (credencial): nombre, puesto, rótulos (DNI, Empresa), valores y «Se renueva en» van en MAYÚSCULAS; excepción a la mayúscula inicial · Agustín · mi_qr.dart
+- 2026-10-23 · [incorporado] · Notificaciones (app): sin chevron ni «Abrir» en las filas (la fila entera abre); deslizar a la izquierda borra, salvo las urgentes; sin filtro; la campanita del aviso de acciones con borde ámbar (`IconoRecuadro(borde:)`) · Agustín · notificaciones.dart
