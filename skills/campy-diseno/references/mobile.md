@@ -142,6 +142,7 @@ tarjeta encima. Las medidas de sombra/borde de abajo quedan para esos casos.
 | `rounded-card-sm` 12 | `circular(12)`: subtarjeta, aviso en línea, recuadro de ícono, tooltip |
 | `rounded-input` 10 | `circular(10)`: input, select, buscador, botón de ícono, botón fantasma, menú |
 | `rounded-pill` | `circular(999)`: chips, barras de avance, pestañas (nunca inputs ni botones: ver «Login») |
+| Barra de avance (color) | relleno **`CampyColors.navy` (#061333)**, el del fondo del botón del QR del Inicio; riel `grisFondo`. Vale para toda barra nueva [D, Agustín 23/10/2026]. Ej.: `_BarraAvance` `home.dart` |
 | botón `rounded-[20px]` | `circular(20)` |
 | Sombra de tarjeta | `[BoxShadow(color: Color(0x0A0F1E3C), blurRadius: 2, offset: Offset(0, 1)), BoxShadow(color: Color(0x240F1E3C), blurRadius: 28, spreadRadius: -18, offset: Offset(0, 10))]` |
 | Sombra de tarjeta en hover | `0x0F0F1E3C` 2/(0,1) + `0x380F1E3C` blur 32, spread -16, (0,14) → en móvil, mientras se aprieta |

@@ -30,3 +30,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-21 · [descartado] · Desvíos que el script encontró en el código (chips con «●», ~230 botones con «→», ~80 placeholders con «…», `AlertDialog`/`SnackBar` en la app): ¿se corrigen en un PR aparte? · autoevaluar.py · — → Agustín 21/10: no se corrigen; solo se reportan
 
 - 2026-10-23 · [incorporado] · Con «Mi Área en camino» no se muestra nada más en la pestaña (quedaba el chip «Mucama» suelto arriba: «está horrible») · Agustín · mobile.md › Composición › «En camino»
+- 2026-10-23 · [incorporado] · Las barras de avance (la del ciclo en el Inicio y toda barra nueva) van del navy del fondo del botón del QR (`CampyColors.navy`), no del azul · Agustín · mobile.md › Radios › «Barra de avance (color)»
