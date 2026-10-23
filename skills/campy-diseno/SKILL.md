@@ -73,6 +73,12 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
 2. **Todo texto con `t()`** en es, en, ko y zh-CN, incluidos `title`, `aria-label` y textos de estado vacío.
 3. **Sin aclaraciones entre paréntesis en la UI:** título + descripción aparte. La descripción es **una sola oración
    simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
+   la planificación.» [D, 16/10/2026] La descripción es **una sola oración
+   simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
+   la planificación.» [D, 16/10/2026] La descripción es **una sola oración
+   simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
+   la planificación.» [D, 16/10/2026] La descripción es **una sola oración
+   simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
    la planificación.» [D, 16/10/2026]
 4. **No se muestra lo que la API rechaza** (permisos): no se deshabilita, se oculta.
 5. **Tokens donde existan:** `text-campy-ink`, `bg-action-blue`, `rounded-card`, `rounded-input`,
@@ -84,6 +90,12 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
    **El violeta ya no es exclusivo de IA** [D, Agustín 17/10/2026]: lo usan Campy AI, el estado `INFO_REQUERIDA` de
    solicitudes de Shift, el color de servicio de Bienestar y la «versión» de un esquema de Shift [D, Agustín 21/10/2026].
 7. **Anillos y arcos con puntas redondeadas y separación entre tramos.**
+8. **El placeholder de un buscador nunca termina en «…» ni «...»:** «Buscar servicio», no «Buscar servicio…». En los
+   cuatro idiomas. [D, 15/10/2026]
+8. **El placeholder de un buscador nunca termina en «…» ni «...»:** «Buscar servicio», no «Buscar servicio…». En los
+   cuatro idiomas. [D, 15/10/2026]
+8. **El placeholder de un buscador nunca termina en «…» ni «...»:** «Buscar servicio», no «Buscar servicio…». En los
+   cuatro idiomas. [D, 15/10/2026]
 8. **Ningún placeholder termina en «…» ni «...»:** ni el de un buscador («Buscar servicio», no «Buscar servicio…») ni
    el de ningún otro campo para escribir («Escribí tu pregunta», no «Escribí tu pregunta…»), en la web y en la app y en
    los cuatro idiomas [D, 15 y 19/10/2026].

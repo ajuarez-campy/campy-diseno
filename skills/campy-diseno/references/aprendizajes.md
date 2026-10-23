@@ -29,3 +29,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-21 · [incorporado] · Rojo para un número que baja en [P] (sigue abierto desde el 17/10) · revisión · tokens.md › Choques → decidido por Agustín 21/10: Sí, va en rojo · SKILL.md regla 6
 - 2026-10-21 · [descartado] · Desvíos que el script encontró en el código (chips con «●», ~230 botones con «→», ~80 placeholders con «…», `AlertDialog`/`SnackBar` en la app): ¿se corrigen en un PR aparte? · autoevaluar.py · — → Agustín 21/10: no se corrigen; solo se reportan
 
+- 2026-10-23 · [incorporado] · Con «Mi Área en camino» no se muestra nada más en la pestaña (quedaba el chip «Mucama» suelto arriba: «está horrible») · Agustín · mobile.md › Composición › «En camino»

@@ -365,7 +365,8 @@ con borde), salvo el micrófono mientras graba. Alto común 48.
   `--dart-define=CAMPY_API_URL`).
 - **«En camino»** (`EnCamino` en `proximamente.dart`) [D, Agustín 19 y 21/10/2026]: mosaicos escalonados
   (desplazamientos 14 / 0 / −8 / 0 / 14, separación 8), el chip «Próximamente», un título de 24 w700 y una oración de 15
-  `gris`, **centrado de arriba a abajo** en el alto disponible (en Mi Área, en lo que queda debajo de los bloques).
+  `gris`, **centrado de arriba a abajo** en el alto disponible. **Mientras un módulo está «en camino», en esa pestaña no
+  se muestra nada más** (ni el rol, ni «Cambiar función», ni otros bloques) [D, Agustín 23/10/2026].
 - **El contenido NO cambia con el formato** [D, Agustín 17/10/2026]: el formato de app moderna es solo cabecera, barra
   inferior y estilo; las tarjetas y bloques de cada pantalla (p. ej. «Mi estadía» con la foto, el QR montado y los
   datos debajo; «Para vos») siguen como estaban. No agregar ni rearmar bloques por imitar una referencia.

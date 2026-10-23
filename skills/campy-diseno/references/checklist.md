@@ -8,6 +8,9 @@ Si el diff toca `worker-app/`, recorré además el checklist de [mobile.md](mobi
 ## Reglas del proyecto (bloquean)
 
 - [ ] Ningún texto visible fijo: todo con `t()` en los 4 idiomas (incluye `title`, `aria-label`, placeholder, vacíos, toasts).
+- [ ] Placeholder de buscador sin «…» ni «...» al final, en los 4 idiomas («Buscar servicio»).
+- [ ] Placeholder de buscador sin «…» ni «...» al final, en los 4 idiomas («Buscar servicio»).
+- [ ] Placeholder de buscador sin «…» ni «...» al final, en los 4 idiomas («Buscar servicio»).
 - [ ] Ningún placeholder (buscador o campo) termina en «…» ni «...», en los 4 idiomas («Buscar servicio»).
 - [ ] Textos con mayúscula inicial (también después de « · » y el mes de una fecha); códigos cortos enteros en mayúscula («ES»); continuaciones de una misma frase en minúscula.
 - [ ] Botones solo con texto (sin flecha ni ícono al lado) y chips de estado sin punto al inicio.
@@ -15,6 +18,9 @@ Si el diff toca `worker-app/`, recorré además el checklist de [mobile.md](mobi
 - [ ] Buscador como el de Shift: `h-11 rounded-input` (no píldora), lupa 15 en `left-3.5`, `pl-9`, 14 px, borde azul al foco sin halo.
 - [ ] Nada inventado: sin dato → «Sin datos» / «—»; en gráficos `null`, no `0`.
 - [ ] Sin aclaraciones entre paréntesis en textos de UI.
+- [ ] Descripciones en una sola oración simple, sin incisos entre comas.
+- [ ] Descripciones en una sola oración simple, sin incisos entre comas.
+- [ ] Descripciones en una sola oración simple, sin incisos entre comas.
 - [ ] Descripciones en una sola oración simple, sin incisos entre comas.
 - [ ] No se muestra (ni se deshabilita) lo que la API rechaza por permiso.
 - [ ] Fechas y números con `fmtNum`, `fmtFecha`, `localeUi()`; «hoy» con `hoyLocalISO()`.
