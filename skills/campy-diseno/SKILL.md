@@ -5,7 +5,7 @@ description: Sistema de diseño del frontend de Campy (For Operators y For Provi
 
 # Diseño del frontend de Campy
 
-Última revisión: 2026-10-21 (alineada con la Worker App del PR #217, el dashboard de Food de campyprov y Shift de
+Última revisión: 2026-10-24 (alineada con la Worker App del PR #217, el dashboard de Food de campyprov y Shift de
 campisoft en `origin/main`). La actualiza «Cómo aprende esta skill», al final.
 
 **Las referencias son tres pantallas** [D, Agustín 16/10/2026]. Marcan el lineamiento de **todo** el diseño de Campy
@@ -129,6 +129,10 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
 18. **Sub-pestañas y selector de vista: los del módulo** [D, Agustín 21/10/2026]: cada módulo conserva su forma (Shift: tarjeta con
     `bg-blue-50` o el riel gris de Horarios, calendario con selector rectangular; Food: subrayado de [P] y `Segmentado`
     de [F]). Al trabajar en un módulo se usa la que ya tiene ese módulo; en uno nuevo, se pregunta.
+    **En Shift (Operators y Providers) mandan las formas de Shift de Operators** sobre la regla de «burbujas en
+    píldora» [D, Agustín 24/10/2026]: pestañas de módulo en píldora azul (`ShiftHubPage`), título «Shift» con el sitio
+    debajo, `Combobox` de filtros `rounded-input`, sub-pestañas en tarjeta con radio 9, selector del calendario
+    rectangular, botones de ícono `rounded-[8px]` y un subtítulo de una oración bajo el título de cada pestaña.
 16. **Letra de la Worker App** [D, Agustín 20/10/2026]: se dibuja un 13 % más chica que lo escrito
     (`escalaLetraCampy = 0.87`) y el tamaño de letra del teléfono se respeta entre 1,0 y 1,1×. No se compensa a mano.
 17. **Animaciones** [D, Agustín 21/10/2026]: respetan «reducir movimiento» del teléfono (quietas o un fundido) y
