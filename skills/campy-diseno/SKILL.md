@@ -5,7 +5,7 @@ description: Sistema de diseño del frontend de Campy (For Operators y For Provi
 
 # Diseño del frontend de Campy
 
-Última revisión: 2026-10-24 (alineada con la Worker App del PR #217, el dashboard de Food de campyprov y Shift de
+Última revisión: 2026-10-26 (alineada con la Worker App del PR #217, el dashboard de Food de campyprov y Shift de
 campisoft en `origin/main`). La actualiza «Cómo aprende esta skill», al final.
 
 **Las referencias son tres pantallas** [D, Agustín 16/10/2026]. Marcan el lineamiento de **todo** el diseño de Campy

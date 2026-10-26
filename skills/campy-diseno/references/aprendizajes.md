@@ -49,3 +49,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · Worker App: fechas con el mes y el día enteros (no «Oct», «Lun»); cortos solo los encabezados de calendario y la tarjeta del turno del Inicio · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, cabecera del Inicio sin «Hoy»: saludo y fecha entera · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, Inicio: tarjeta del turno inmersiva con la foto del campamento y línea de tiempo Hoy · Ingreso · Salida (hora debajo de la fecha) · Agustín · mobile.md
+- 2026-10-26 · [incorporado] · Worker App, Servicios: widgets de estado (Apple Home) en bloques de color lleno, tono 700 del color de servicio y pictograma blanco sin recuadro; se toca el bloque entero; sin buscador · Agustín · mobile.md
