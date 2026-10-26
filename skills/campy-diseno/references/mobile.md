@@ -143,6 +143,7 @@ tarjeta encima. Las medidas de sombra/borde de abajo quedan para esos casos.
 | `rounded-input` 10 | `circular(10)`: input, select, buscador, botón de ícono, botón fantasma, menú |
 | `rounded-pill` | `circular(999)`: chips, barras de avance, pestañas (nunca inputs ni botones: ver «Login») |
 | Barra de avance (color) | relleno **`CampyColors.navy` (#061333)**, el del fondo del botón del QR del Inicio; riel `grisFondo`. El número del porcentaje que acompaña la barra («93%») va del mismo navy. Vale para toda barra nueva [D, Agustín 23/10/2026]. Ej.: `_BarraAvance` `home.dart` |
+| Advertencias, urgencias, avisos sin conexión y estados pendientes | **`CampyColors.rojo`** (#DC2626, el de «Cerrar sesión»), texto, ícono, borde y fondo `rojoFondo`/`rojoBorde`; ya no ámbar. «Pendiente», «A confirmar», toasts de espera, «Datos guardados…», «Falta…», bajada vencida: todo rojo. Ámbar solo para las campanitas y lo que no es aviso (micrófono hablando, niveles, categorías) [D, Agustín 26/10/2026] | `theme.dart`, `colorTono` |
 | Tarjeta del turno del Inicio (Próximo turno, Mi estadía) | ícono, «En N días», duración y días restantes en **`CampyColors.navy`**, no en azul [D, Agustín 26/10/2026] | `home.dart` |
 | Cabecera del Inicio | saludo; debajo «Hoy» y, en otra línea, la fecha entera «Lunes, 26 de Octubre» (`Idioma.diaSemanaLargo`); campana **ámbar entera** (borde de 1,25 y dibujo; `BotonRedondo(borde: CampyColors.ambar)`), como la de Notificaciones [D, Agustín 26/10/2026] | `barraCampy` `ui.dart`, `hoyCabecera` |
 | botón `rounded-[20px]` | `circular(20)` |

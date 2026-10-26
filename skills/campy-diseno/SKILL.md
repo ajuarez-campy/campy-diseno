@@ -84,7 +84,7 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
 5. **Tokens donde existan:** `text-campy-ink`, `bg-action-blue`, `rounded-card`, `rounded-input`,
    `rounded-pill`, `shadow-card-hover`, `bg-status-*`. Hex arbitrario solo si no hay token (ver tabla en
    tokens.md). **`campy-blue` no existe en campisoft: usar `action-blue`.**
-6. **Colores con significado** (cinco tonos, ver abajo). Nunca rojo para algo que no sea crítico/riesgo, **salvo un
+6. **Colores con significado** (cinco tonos, ver abajo). **En la Worker App, advertencias, urgencias, avisos sin conexión y estados pendientes van en rojo** (el de «Cerrar sesión»), no en ámbar [D, Agustín 26/10/2026]; ver mobile.md. Nunca rojo para algo que no sea crítico/riesgo, **salvo un
    número que baja** (delta negativo, egresos), que sí va en rojo [D, Agustín 21/10/2026]. Los íconos de los KPI pueden llevar un tono
    propio decorativo (como los de [F]: ámbar, sky, violeta, teal, rojo, esmeralda) [D, Agustín 21/10/2026].
    **El violeta ya no es exclusivo de IA** [D, Agustín 17/10/2026]: lo usan Campy AI, el estado `INFO_REQUERIDA` de
