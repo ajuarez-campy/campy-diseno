@@ -588,4 +588,4 @@ confirmación destructiva (contorno rojo), íconos (lucide). Decididas por Agust
 modal y hoja (degradé navy de Shift), botón (44 / radio 20), chip con punto (con borde del color del texto) e
 `INFO_REQUERIDA` (violeta). Sigue abierta:
 
-- ~~**SOS flotante.**~~ Resuelto [D, Agustín 26/10/2026]: **redondo** (burbuja toda roja de 60, sin borde, sombra `0x59DC2626` blur 18 (0,8), ícono blanco 30, 0,94 al apretar; `BotonSos` `ui.dart`). **No va en el Inicio**: sin el cartel «¿Necesitás ayuda urgente?»; flota en las otras pestañas y en Cori.
+- ~~**SOS flotante.**~~ Resuelto [D, Agustín 26/10/2026]: **redondo** (burbuja toda roja de 60, sin borde, sombra `0x59DC2626` blur 18 (0,8), ícono blanco 30, 0,94 al apretar; `BotonSos` `ui.dart`). **No va en el Inicio**: ahí queda el cartel «¿Necesitás ayuda urgente?» sin la burbuja (la tarjeta entera abre la emergencia, con chevron); flota en las otras pestañas y en Cori.

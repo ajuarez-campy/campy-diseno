@@ -54,3 +54,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · Worker App, «Para vos»: Transporte fijo + filas deslizables «Hoy» y «Tu estadía», tarjetas vivas en el color fuerte de cada servicio (reemplaza todas en azul) · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, «Para vos»: un color distinto por tarjeta (Alojamiento azul marino, Ayuda fucsia) y una sola tarjeta de comida con la vianda adentro · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, SOS: fuera del Inicio y redondo en las otras pestañas y en Cori · Agustín · mobile.md
+- 2026-10-26 · [incorporado] · Worker App, Inicio: «¿Necesitás ayuda urgente?» al pie sin la burbuja del SOS; la tarjeta entera abre la emergencia · Agustín · mobile.md
