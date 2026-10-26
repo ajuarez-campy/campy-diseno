@@ -146,6 +146,10 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     (`escalaLetraCampy = 0.87`) y el tamaño de letra del teléfono se respeta entre 1,0 y 1,1×. No se compensa a mano.
 17. **Animaciones** [D, Agustín 21/10/2026]: respetan «reducir movimiento» del teléfono (quietas o un fundido) y
     **nunca traban la navegación ni impiden entrar**: si una animación falla, la acción sigue sin ella.
+19. **Nada de anotaciones de relleno** [D, Agustín 26/10/2026]: no se muestra de dónde sale un dato ni quién lo
+    cargó («Cargada por tu empresa», «Recepción a cargo de la minera según…»), ni aclaraciones de alcance o del sistema
+    («Solo por tipo», «Solo el cocinero declara»), ni el mismo dato dos veces (chip «Vencida hace 3 días» y además
+    «Venció el 23 de Octubre»). Cada pantalla muestra solo lo que la persona necesita para actuar; ante la duda, se saca.
 
 ## Lo esencial de un vistazo
 
