@@ -115,6 +115,8 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     «Solicitar ayuda», «Reportar en Connect», «Reservar →»): se tocan enteras. **En un listado, las filas que se pueden
     tocar y llevan a algún lado sí llevan `>`** (Perfil «Más», Configuración, teléfonos, actividades) [D, Agustín 26/10/2026].
     Quedan las acciones reales, los botones de pantalla y los ‹ › de mes.
+    **Sin «+» delante del texto** tampoco en Shift ni Turnos («Nueva asignación»); el «+ Nueva asignación» de Operators es
+    un desvío [D, Agustín 26/10/2026].
 12. **Íconos en recuadro con un solo formato** [D, Agustín 19/10/2026] (Worker App): cuadrado redondeado (radio 24 % del
     lado), fondo blanco, borde de 1,25 y dibujo del color (`IconoRecuadro` en `ui.dart`, el de «Próximamente»). Nada de
     recuadros o círculos tintados con el ícono adentro.
@@ -141,7 +143,8 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     siempre: esquemas, asignaciones, solicitudes, calendario, DAE/DAP, colores) y «Turnos» (horarios de entrada y
     salida, ruta propia: `/turnos` en Operators, `/providers/turnos` en Providers), con la cabecera y la barra de
     secciones de Rosters. En Providers, Turnos conserva la sección **Excepciones** (Operators la sacó): es la única
-    forma de cargar un cambio de horario de un día puntual.
+    forma de cargar un cambio de horario de un día puntual. También conserva lo que Operators sacó y Providers ya tenía: esquemas rotativos y fijos, reglas
+    por dotación o puesto, editar vigencia y contraturno, y reactivar esquemas [D, Agustín 26/10/2026].
 16. **Letra de la Worker App** [D, Agustín 20/10/2026]: se dibuja un 13 % más chica que lo escrito
     (`escalaLetraCampy = 0.87`) y el tamaño de letra del teléfono se respeta entre 1,0 y 1,1×. No se compensa a mano.
 17. **Animaciones** [D, Agustín 21/10/2026]: respetan «reducir movimiento» del teléfono (quietas o un fundido) y
