@@ -111,6 +111,8 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     los costados, en la web y en la app. Quedan afuera los botones que son solo un ícono (sin texto), el chevron de un
     selector que despliega opciones y **una fila entera que navega** (fila de alerta, «Ver todas»), que sí lleva su
     chevron a la derecha [D, Agustín 21/10/2026].
+    **En la Worker App ninguna tarjeta lleva botón ni rótulo con flecha para navegar** («Ver alojamiento», «Ver traslado»,
+    «Reservar →»): se toca la tarjeta entera [D, Agustín 26/10/2026]. Quedan las acciones reales y los botones de pantalla.
 12. **Íconos en recuadro con un solo formato** [D, Agustín 19/10/2026] (Worker App): cuadrado redondeado (radio 24 % del
     lado), fondo blanco, borde de 1,25 y dibujo del color (`IconoRecuadro` en `ui.dart`, el de «Próximamente»). Nada de
     recuadros o círculos tintados con el ícono adentro.
