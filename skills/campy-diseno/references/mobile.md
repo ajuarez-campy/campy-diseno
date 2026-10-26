@@ -343,7 +343,7 @@ con borde), salvo el micrófono mientras graba. Alto común 48.
     (el blanco tapa la conversación, la página cambia en 0,3, la hoja baja y Cori vuelve a la barra). Deslizando o con
     «reducir movimiento», sin vuelo. **El vuelo es solo visual y nunca traba la barra**: si falla, la pestaña se
     desliza como antes.
-  - El SOS sigue flotando aparte.
+  - El SOS ya no flota: está solo en el Inicio [D, Agustín 26/10/2026].
 - **Cori vivo** (`CoriVivo` + `OjosCori` en `widgets/cori_vivo.dart`) [D, Agustín 20 y 21/10/2026]: imagen
   `cori.png` (82 en la barra, aro de ~62) con ojos dibujados encima. Gestos: **toque** (1,1 s: abre los ojos y los
   cierra contento, escala 1 → 1,08 y rebote de 1,05), **entrada** (2,4 s: abre, mira a la izquierda y a la derecha y
@@ -588,4 +588,4 @@ confirmación destructiva (contorno rojo), íconos (lucide). Decididas por Agust
 modal y hoja (degradé navy de Shift), botón (44 / radio 20), chip con punto (con borde del color del texto) e
 `INFO_REQUERIDA` (violeta). Sigue abierta:
 
-- ~~**SOS flotante.**~~ Resuelto [D, Agustín 26/10/2026]: **redondo** (burbuja toda roja de 60, sin borde, sombra `0x59DC2626` blur 18 (0,8), ícono blanco 30, 0,94 al apretar; `BotonSos` `ui.dart`). **No va en el Inicio**: ahí queda el cartel «¿Necesitás ayuda urgente?» sin la burbuja (la tarjeta entera abre la emergencia, sin flecha); flota en las otras pestañas y en Cori.
+- ~~**SOS flotante.**~~ Resuelto [D, Agustín 26/10/2026]: **redondo** (burbuja toda roja de 60, sin borde, sombra `0x59DC2626` blur 18 (0,8), ícono blanco 30, 0,94 al apretar; `BotonSos` `ui.dart`). **No va en el Inicio**: ahí queda el cartel «¿Necesitás ayuda urgente?» sin la burbuja (la tarjeta entera abre la emergencia, sin flecha); flota en las otras pestañas y en Cori. **Cambio [D, Agustín 26/10/2026, más tarde]: el SOS está solo en el Inicio**, en ese cartel; no flota en ninguna otra pantalla (se borró `BotonSos`) y las listas ya no dejan margen para él.
