@@ -59,3 +59,5 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · Worker App: ninguna tarjeta con botón ni flecha para navegar, en toda la app · Agustín · SKILL.md regla 11
 - 2026-10-26 · [incorporado] · Worker App: sin chevrons ni textos-enlace en filas y tarjetas (reemplaza el chevron de fila que navega del 21/10 en la app) · Agustín · SKILL.md regla 11
 - 2026-10-26 · [incorporado] · Worker App: «>» solo en filas de un listado que navegan; tarjetas sueltas sin flecha ni botón · Agustín · SKILL.md regla 11
+- 2026-10-26 · [incorporado] · Rediseño de Mateo en Operators (PR #237): chip de esquema en una sola píldora pastel azul, avatares «cremita» por persona, paginación sin selector de filas y esquemas de roster sin «vN»; en Shift manda Operators, así que vale para Providers · Agustín · piezas.md (Shift)
+- 2026-10-26 · [incorporado] · Providers separa el menú en «Rosters» y «Turnos» como Operators, y Turnos conserva Excepciones · Agustín · SKILL.md regla 18

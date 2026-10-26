@@ -137,6 +137,11 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     píldora» [D, Agustín 24/10/2026]: pestañas de módulo en píldora azul (`ShiftHubPage`), título «Shift» con el sitio
     debajo, `Combobox` de filtros `rounded-input`, sub-pestañas en tarjeta con radio 9, selector del calendario
     rectangular, botones de ícono `rounded-[8px]` y un subtítulo de una oración bajo el título de cada pestaña.
+    **Planificación en dos ítems de menú, en los dos productos** [D, Agustín 26/10/2026]: «Rosters» (el Shift de
+    siempre: esquemas, asignaciones, solicitudes, calendario, DAE/DAP, colores) y «Turnos» (horarios de entrada y
+    salida, ruta propia: `/turnos` en Operators, `/providers/turnos` en Providers), con la cabecera y la barra de
+    secciones de Rosters. En Providers, Turnos conserva la sección **Excepciones** (Operators la sacó): es la única
+    forma de cargar un cambio de horario de un día puntual.
 16. **Letra de la Worker App** [D, Agustín 20/10/2026]: se dibuja un 13 % más chica que lo escrito
     (`escalaLetraCampy = 0.87`) y el tamaño de letra del teléfono se respeta entre 1,0 y 1,1×. No se compensa a mano.
 17. **Animaciones** [D, Agustín 21/10/2026]: respetan «reducir movimiento» del teléfono (quietas o un fundido) y

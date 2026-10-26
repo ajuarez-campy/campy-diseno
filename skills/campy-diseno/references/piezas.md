@@ -498,9 +498,15 @@ filtrado**, y al cambiar un filtro se vuelve a la primera tanda (`:200`).
   grid-cols-7 gap-1.5`, celda `rounded-[10px] border p-2 min-h-[88px]` con el color del código.
 - **Pill con color configurado** (Colores): fondo con el hex elegido y texto de `textoSobre()` (blanco, o `#0f172a` si
   no contrasta) (`ShiftSolicitudesPage.tsx:129-141`).
-- **Código de esquema:** `text-[12px] font-bold px-2.5 py-1 rounded-[7px] border` con `ESQUEMA_COLORES`
-  (`ShiftAssignmentsPage.tsx:91-98`).
-- **Avatar de iniciales:** `h-9 w-9 rounded-full bg-blue-100 text-action-blue text-[12px] font-bold`.
+- **Código de esquema:** una sola píldora pastel azul para todos los esquemas, `inline-flex items-center
+  text-[12px] font-bold px-2.5 py-1 rounded-pill border border-action-blue bg-blue-50 text-blue-700` (Mateo, 26/10/2026,
+  `ShiftAssignmentsPage.tsx`; reemplaza el color por esquema `ESQUEMA_COLORES` con radio 7).
+- **Avatar de iniciales «cremita»:** `h-9 w-9 rounded-full text-[12px] font-bold` + `avatarColor(nombre)` de
+  `@/lib/avatar` (fondo -100 y letra -700 de ocho tonos, fijo por persona); iniciales con `inicialesDe()`. En toda
+  Planificación (Rosters, Turnos, DAE/DAP, Solicitudes, Calendario) desde el 26/10/2026.
+- **Paginación de Shift:** sin selector de filas; «Mostrando…» a la izquierda y los botones a la derecha (26/10/2026).
+- **Esquemas de roster:** sin la pastilla de versión «vN» (26/10/2026). Los esquemas de **horario** (Turnos) se
+  editan en el lugar: no hay versión que mostrar.
 - **Progreso del ciclo en una celda:** riel `h-[6px] rounded-full bg-slate-200` con relleno azul.
 - **Barra fija de cambios en lote:** `sticky bottom-3 z-30 rounded-[14px] border border-slate-200 bg-white
   shadow-[0_8px_30px_-8px_rgba(15,30,60,0.25)] px-5 py-3` (`ShiftSolicitudesPage.tsx:694`).
