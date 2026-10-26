@@ -58,3 +58,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · Worker App, Inicio: ninguna tarjeta con botón ni flecha; se toca la tarjeta (sale «Ver alojamiento» de la llave y la flecha de ayuda urgente) · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App: ninguna tarjeta con botón ni flecha para navegar, en toda la app · Agustín · SKILL.md regla 11
 - 2026-10-26 · [incorporado] · Worker App: sin chevrons ni textos-enlace en filas y tarjetas (reemplaza el chevron de fila que navega del 21/10 en la app) · Agustín · SKILL.md regla 11
+- 2026-10-26 · [incorporado] · Worker App: «>» solo en filas de un listado que navegan; tarjetas sueltas sin flecha ni botón · Agustín · SKILL.md regla 11
