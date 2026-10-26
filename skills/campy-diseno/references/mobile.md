@@ -144,7 +144,7 @@ tarjeta encima. Las medidas de sombra/borde de abajo quedan para esos casos.
 | `rounded-pill` | `circular(999)`: chips, barras de avance, pestañas (nunca inputs ni botones: ver «Login») |
 | Barra de avance (color) | en el Inicio, relleno **`CampyColors.azul`** como el resto de la tarjeta, riel `grisFondo` [D, Agustín 26/10/2026; antes navy, 23/10]. Fuera del Inicio: preguntar. Ej.: `_BarraAvance` `home.dart` |
 | Advertencias, urgencias, avisos sin conexión y estados pendientes | **`CampyColors.rojo`** (#DC2626, el de «Cerrar sesión»), texto, ícono, borde y fondo `rojoFondo`/`rojoBorde`; ya no ámbar. «Pendiente», «A confirmar», toasts de espera, «Datos guardados…», «Falta…», bajada vencida: todo rojo. Ámbar solo para las campanitas y lo que no es aviso (micrófono hablando, niveles, categorías) [D, Agustín 26/10/2026] | `theme.dart`, `colorTono` |
-| Tarjetas del Inicio | todas en el **azul Campy** (`CampyColors.azul`, el de «Transporte»): la del turno (Próximo turno, Mi estadía) lleva ícono, días, duración, días restantes, porcentaje y barra en azul; el botón del QR sigue navy [D, Agustín 26/10/2026, reemplaza el navy del 23 y del 26/10] | `home.dart` |
+| Tarjetas del Inicio | todas en el **azul Campy** (`CampyColors.azul`, el de «Transporte»): la del turno (Próximo turno, Mi estadía) lleva ícono, días, duración, días restantes, porcentaje y barra en azul; el botón del QR también, con el dibujo blanco [D, Agustín 26/10/2026, reemplaza el navy del 19, 23 y 26/10] | `home.dart` |
 | Cabecera del Inicio | saludo; debajo «Hoy» y, en otra línea, la fecha entera «Lunes, 26 de Octubre» (`Idioma.diaSemanaLargo`); campana **ámbar entera** (borde de 1,25 y dibujo; `BotonRedondo(borde: CampyColors.ambar)`), como la de Notificaciones [D, Agustín 26/10/2026] | `barraCampy` `ui.dart`, `hoyCabecera` |
 | botón `rounded-[20px]` | `circular(20)` |
 | Sombra de tarjeta | `[BoxShadow(color: Color(0x0A0F1E3C), blurRadius: 2, offset: Offset(0, 1)), BoxShadow(color: Color(0x240F1E3C), blurRadius: 28, spreadRadius: -18, offset: Offset(0, 10))]` |
@@ -170,7 +170,7 @@ tema (hasta corregir el tema, siempre con `botonPrimarioCampy` y sus hermanos).
   Estilo de la referencia: recuadro blanco con radio 24 % del lado y borde 1,5 del color del servicio (1,25 por debajo de 56 de lado), glifo de
   línea fina (1.5) del mismo color con puntas redondeadas, insignia opcional abajo a la derecha (círculo blanco con
   borde del color: ✓ Alojamiento, ✦ Lavandería). Tamaños 72 (tarjeta de Servicios), 40 (listas), 32 (filas).
-- **«Mi QR» del Inicio** [D, Agustín 19/10/2026, reemplaza lo del 17/10]: cuadrado navy de 72 con radio 16 y el
+- **«Mi QR» del Inicio** [D, Agustín 19/10/2026, reemplaza lo del 17/10]: cuadrado **azul Campy** (`CampyColors.azul`; navy hasta el 26/10/2026) de 72 con radio 16 y el
   dibujo del QR en blanco (44), sin rótulo («Mi QR» solo para lectores de pantalla). Al tocarlo abre la credencial
   (`home.dart`, `mi_qr.dart`).
 

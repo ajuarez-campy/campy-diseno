@@ -43,3 +43,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · La campana del Inicio va ámbar entera: el círculo y el dibujo, no solo el borde · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App: advertencias, urgencias, avisos sin conexión y estados pendientes en el rojo de «Cerrar sesión», no en ámbar; las campanitas siguen ámbar · Agustín · SKILL.md regla 6, mobile.md · [pendiente] si vale también para la web
 - 2026-10-26 · [incorporado] · Worker App, Inicio: todas las tarjetas en el azul Campy (el de «Transporte»); la del turno deja el navy, barra incluida. Reemplaza la tarjeta del turno en navy (mismo día) y las barras en navy (23/10). El botón del QR sigue navy · Agustín · mobile.md · [pendiente] color de barras fuera del Inicio
+- 2026-10-26 · [incorporado] · Worker App, Inicio: el botón del QR pasa al azul Campy (antes navy), dibujo blanco · Agustín · mobile.md
