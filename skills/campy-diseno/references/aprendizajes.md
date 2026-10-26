@@ -46,3 +46,5 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · Worker App, Inicio: el botón del QR pasa al azul Campy (antes navy), dibujo blanco · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, Inicio: «Transporte» en formato pase de embarque (maqueta A del 24/10), botón en azul Campy; el chofer con el mismo formato · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, solicitudes abiertas: «Adjuntar foto» y a su derecha «Cancelar solicitud», en píldoras (`botonPildoraCampy`) · Agustín · mobile.md
+- 2026-10-26 · [incorporado] · Worker App: fechas con el mes y el día enteros (no «Oct», «Lun»); cortos solo los encabezados de calendario y la tarjeta del turno del Inicio · Agustín · mobile.md
+- 2026-10-26 · [incorporado] · Worker App, cabecera del Inicio sin «Hoy»: saludo y fecha entera · Agustín · mobile.md
