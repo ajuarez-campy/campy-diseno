@@ -588,5 +588,4 @@ confirmación destructiva (contorno rojo), íconos (lucide). Decididas por Agust
 modal y hoja (degradé navy de Shift), botón (44 / radio 20), chip con punto (con borde del color del texto) e
 `INFO_REQUERIDA` (violeta). Sigue abierta:
 
-- **SOS flotante.** (sin respuesta el 17/10; queda el actual hasta que decida) No está en las maquetas ni en las tres referencias; ¿círculo rojo con sombra de tarjeta o se queda
-  el FAB de Material?
+- ~~**SOS flotante.**~~ Resuelto [D, Agustín 26/10/2026]: **redondo** (círculo rojo de 60, borde blanco 2, sombra `0x59DC2626` blur 18 (0,8), ícono blanco 30, 0,94 al apretar; `BotonSos` `ui.dart`). **No va en el Inicio**: sin el cartel «¿Necesitás ayuda urgente?»; flota en las otras pestañas y en Cori.
