@@ -45,3 +45,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · Worker App, Inicio: todas las tarjetas en el azul Campy (el de «Transporte»); la del turno deja el navy, barra incluida. Reemplaza la tarjeta del turno en navy (mismo día) y las barras en navy (23/10). El botón del QR sigue navy · Agustín · mobile.md · [pendiente] color de barras fuera del Inicio
 - 2026-10-26 · [incorporado] · Worker App, Inicio: el botón del QR pasa al azul Campy (antes navy), dibujo blanco · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, Inicio: «Transporte» en formato pase de embarque (maqueta A del 24/10), botón en azul Campy; el chofer con el mismo formato · Agustín · mobile.md
+- 2026-10-26 · [incorporado] · Worker App, solicitudes abiertas: «Adjuntar foto» y a su derecha «Cancelar solicitud», en píldoras (`botonPildoraCampy`) · Agustín · mobile.md
