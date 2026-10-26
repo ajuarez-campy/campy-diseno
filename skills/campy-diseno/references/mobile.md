@@ -144,7 +144,7 @@ tarjeta encima. Las medidas de sombra/borde de abajo quedan para esos casos.
 | `rounded-pill` | `circular(999)`: chips, barras de avance, pestañas (nunca inputs ni botones: ver «Login») |
 | Barra de avance (color) | relleno **`CampyColors.navy` (#061333)**, el del fondo del botón del QR del Inicio; riel `grisFondo`. El número del porcentaje que acompaña la barra («93%») va del mismo navy. Vale para toda barra nueva [D, Agustín 23/10/2026]. Ej.: `_BarraAvance` `home.dart` |
 | Tarjeta del turno del Inicio (Próximo turno, Mi estadía) | ícono, «En N días», duración y días restantes en **`CampyColors.navy`**, no en azul [D, Agustín 26/10/2026] | `home.dart` |
-| Cabecera del Inicio | saludo; debajo «Hoy» y, en otra línea, la fecha entera «Lunes, 26 de Octubre» (`Idioma.diaSemanaLargo`); campana con borde **ámbar** de 1,25 (`BotonRedondo(borde: CampyColors.ambar)`), como la de Notificaciones [D, Agustín 26/10/2026] | `barraCampy` `ui.dart`, `hoyCabecera` |
+| Cabecera del Inicio | saludo; debajo «Hoy» y, en otra línea, la fecha entera «Lunes, 26 de Octubre» (`Idioma.diaSemanaLargo`); campana **ámbar entera** (borde de 1,25 y dibujo; `BotonRedondo(borde: CampyColors.ambar)`), como la de Notificaciones [D, Agustín 26/10/2026] | `barraCampy` `ui.dart`, `hoyCabecera` |
 | botón `rounded-[20px]` | `circular(20)` |
 | Sombra de tarjeta | `[BoxShadow(color: Color(0x0A0F1E3C), blurRadius: 2, offset: Offset(0, 1)), BoxShadow(color: Color(0x240F1E3C), blurRadius: 28, spreadRadius: -18, offset: Offset(0, 10))]` |
 | Sombra de tarjeta en hover | `0x0F0F1E3C` 2/(0,1) + `0x380F1E3C` blur 32, spread -16, (0,14) → en móvil, mientras se aprieta |

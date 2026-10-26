@@ -40,3 +40,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-24 · [incorporado] · Roster del contratista: lista + detalle (como DAE/DAP y Asignaciones) en vez del panel lateral, con 4 KPIs de estado · Agustín · SKILL.md regla 18
 - 2026-10-26 · [incorporado] · Worker App, cabecera del Inicio: «Hoy» en una línea y la fecha entera abajo («Lunes, 26 de Octubre»); la campana con el borde amarillo (ámbar), como la de Notificaciones · Agustín · mobile.md
 - 2026-10-26 · [incorporado] · Worker App, tarjeta del turno del Inicio (Próximo turno y Mi estadía): el azul pasa al navy del botón del QR (ícono, «En N días», duración, días restantes) · Agustín · mobile.md
+- 2026-10-26 · [incorporado] · La campana del Inicio va ámbar entera: el círculo y el dibujo, no solo el borde · Agustín · mobile.md
