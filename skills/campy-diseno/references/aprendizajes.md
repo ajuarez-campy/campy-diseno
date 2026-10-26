@@ -61,3 +61,4 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-26 · [incorporado] · Worker App: «>» solo en filas de un listado que navegan; tarjetas sueltas sin flecha ni botón · Agustín · SKILL.md regla 11
 - 2026-10-26 · [incorporado] · Rediseño de Mateo en Operators (PR #237): chip de esquema en una sola píldora pastel azul, avatares «cremita» por persona, paginación sin selector de filas y esquemas de roster sin «vN»; en Shift manda Operators, así que vale para Providers · Agustín · piezas.md (Shift)
 - 2026-10-26 · [incorporado] · Providers separa el menú en «Rosters» y «Turnos» como Operators, y Turnos conserva Excepciones · Agustín · SKILL.md regla 18
+- 2026-10-26 · [incorporado] · Worker App: tarjetas de color en pastel (`pastelDe`), dato en tinta y acento en el tono fuerte; reemplaza el lleno con letra blanca en Servicios, «Para vos» y Mi Área · Agustín · mobile.md (Servicios, «Para vos»)
