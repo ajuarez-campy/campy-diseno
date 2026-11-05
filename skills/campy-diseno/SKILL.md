@@ -72,18 +72,20 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
 - **Algo que no está acá** (un patrón nuevo, o dos estilos que no cubre la guía): preguntale al usuario antes
   de inventar uno y, si lo decide, agregalo a esta skill (ver «Cómo aprende esta skill»).
 
-**Cómo trabaja el diseño Agustín** (Worker App, desde el 26/10/2026):
-- **Maqueta antes de código** cuando cambia la composición: tablero en el lienzo de maquetas
-  (https://claude.ai/artifact/T9qYd6rPcpRWqgRhFUNtWQ, con `canvas.json` publicado y `is_interactive: true`) o HTML en
-  `~/Escritorio/laburo/maquetas-worker-app/<módulo>/`, con dos o tres variantes; él elige y recién ahí va Flutter.
-  Los ajustes chicos se aplican directo.
-- **Inspiración** en su carpeta de Drive (`1b87oWtwZvonaYP80Wf08TjPTAj9kBLbM`: lavandería, dashboard, transporte, QR,
-  pases) y **animaciones de referencia** en `~/Escritorio/laburo/campy-animations/` (GIF/MP4): se adaptan a Campy y se
-  traducen a código (`CustomPainter`/`AnimationController`), nunca se copian ni se embeben. Rive se probó y se descartó
-  (3/11). Los dibujos de los servicios son recortes de sus imágenes, no vectores propios.
-- **Lo que marca en rojo en una captura sin texto es para sacar** (con sus claves de idioma huérfanas); si la marca viene
-  con un texto, manda el texto.
-- **Sin capturas automáticas** del visor: él mira a ojo y manda captura; se recarga el visor y se avisa qué mirar.
+**Cómo se decide el diseño en Campy** (para todo el equipo):
+- **El lineamiento lo define Agustín** (líder de frontend). Las reglas marcadas `[D, Agustín dd/mm/aaaa]` ya están
+  decididas y valen para todos: no se discuten en un PR ni se cambian por gusto. Si una regla te traba, se le plantea a él.
+- **Lo que no está en la skill se pregunta antes de codificar**, no se inventa ni se copia de otra pantalla que «se ve
+  parecida». Lo que él decide se suma a la skill (ver «Cómo aprende esta skill»).
+- **Maqueta antes de código** cuando cambia la composición de una pantalla (qué bloques, en qué orden): dos o tres
+  variantes en HTML para que Agustín elija; recién después se pasa a React o a Flutter. Los ajustes chicos (un color,
+  un texto, un margen) van directo.
+- **Referencias visuales de afuera** (otras apps, GIF o videos de animaciones): se adaptan a Campy (sus colores, su
+  letra y estas reglas) y se traducen a código propio (`CustomPainter`/`AnimationController` en la app); nunca se copian
+  ni se embeben. Rive se probó y se descartó (3/11/2026). Los dibujos de los servicios son los de
+  `worker-app/assets/ilustraciones/`: no se dibujan vectores nuevos sin pedirlo.
+- **Una captura con algo encerrado en rojo y sin texto** quiere decir «sacar esto» (con sus claves de idioma, que quedan
+  huérfanas); si la marca viene con un texto, manda el texto.
 
 ## Reglas que no se negocian
 
@@ -193,11 +195,13 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     pantalla. En una línea, «ALFA Norte a Salta» (clave `comunRuta`, «{origen} a {destino}»); con lugar, el widget
     `Recorrido` (círculo vacío, línea de puntos, círculo lleno). Tampoco en caminos de navegación («Servicios →
     Alojamiento» se escribe con palabras) ni en las maquetas.
-24. **Horas con «hs» y fecha entera** [D, Agustín 29/10/2026]: «14:00hs» (`comunHoraHs`; solo el español lleva el
-    sufijo), duraciones «4hs», «1hs 20 min» (`duracionTextoHs`) y la fecha con el día y el mes enteros («Viernes 6 de
-    Noviembre», `fechaConDia`). Ya rige en Mi traslado, su tarjeta de embarque, Notificaciones («19:01hs») y
-    Lavandería («Lista desde hoy 07:42hs»). `[pendiente]` si es regla de toda la app (Inicio, Servicios, Comedor, Mi
-    roster y `duracionTexto`): preguntar antes de extenderlo.
+24. **Horas con «hs» y fecha entera, en toda la Worker App** [D, Agustín 29/10 y 4/11/2026]. Toda hora lleva «hs»
+    pegado: «14:00hs» (`comunHoraHs`; solo el español lleva el sufijo, los otros idiomas muestran la hora sola); toda
+    duración, «4hs», «1hs 20 min» (`duracionTextoHs`, no `duracionTexto`). Toda fecha va con el día y el mes enteros:
+    «Viernes 6 de Noviembre», «6 de Noviembre» (`fechaConDia` o `fmtFecha` sin `corta`); nunca «Nov», «Vie» ni
+    `fmtFecha(…, corta: true)`. Si la fecha entera no entra, se reubica en otra línea (regla 20), no se abrevia. Solo
+    quedan cortos los encabezados de columna de un calendario (Lun…Dom). En la web: `[pendiente]` confirmar con
+    Agustín si también lleva «hs».
 25. **Sin zócalos** [D, Agustín 31/10/2026]: ninguna tarjeta ni fila lleva una barra de color pegada al borde izquierdo.
     Se distingue con el fondo (celeste lo destacado, blanco con borde fino lo demás), con el color del texto o con la
     palabra del estado. En la app, en el lienzo y en la web nueva.
@@ -271,7 +275,8 @@ La skill se autoevalúa y se corrige sola, en tres momentos. No es opcional: es 
 
 1. **Al empezar** una tarea de diseño o una revisión, correr la autoevaluación desde la carpeta de esta skill:
    `python3 scripts/autoevaluar.py` (lee `origin/main` de los dos repos sin tocar las copias de trabajo; los repos se
-   buscan en `$CAMPISOFT` y `$CAMPYPROV`, por defecto `~/Escritorio/laburo/campisoft` y `~/Escritorio/laburo/campyprov`;
+   buscan en `$CAMPISOFT` y `$CAMPYPROV`, por defecto `~/Escritorio/laburo/campisoft` y `~/Escritorio/laburo/campyprov`: si tus clones están en otro
+   lado, exportá esas dos variables;
    para mirar una rama: `--campisoft /ruta --campisoft-ref HEAD`). Reporta rutas que la skill cita y
    ya no existen, desvíos de las reglas en el código (chips con punto, botones con flecha, placeholders con «…»,
    `campy-blue`, Material prohibido, minúsculas, y en la app textos cortados con «...», `ScaffoldMessenger`, paréntesis
@@ -281,8 +286,10 @@ La skill se autoevalúa y se corrige sola, en tres momentos. No es opcional: es 
 2. **Durante:** cada corrección o decisión de diseño del usuario («así no», «va con mayúscula», «sacá el hueco») se
    anota **en el momento** en [references/aprendizajes.md](references/aprendizajes.md) (fecha, qué, origen, dónde
    quedó) y se lleva a la regla, pieza o token que corresponde en el mismo turno, con `[D, usuario dd/mm/aaaa]`.
-   Lo que el usuario no decidió queda `[pendiente]` y se le pregunta; nunca se elige por cuenta propia. Toda decisión va
-   también al vault de Campy (`~/Escritorio/laburo/campy-vault/02 - Decisiones/Registro de decisiones.md`).
+   Lo que el usuario no decidió queda `[pendiente]` y se le pregunta; nunca se elige por cuenta propia. **Si quien usa la
+   skill no es Agustín**, su decisión se anota `[pendiente: confirmar con Agustín]`, salvo que diga que ya lo acordó con
+   él (entonces `[D, Agustín dd/mm/aaaa]` y de dónde salió). Si tenés el vault de producto de Campy, la decisión va
+   también a `02 - Decisiones/Registro de decisiones.md`.
 3. **Al terminar:** revisar lo hecho contra la skill. Si se usó un valor, una pieza o un patrón que la skill no tenía,
    o si la skill dijo algo que el código o el usuario desmintieron, corregir la skill, sumar la entrada en
    aprendizajes.md y actualizar «Última revisión». Si la autoevaluación mostró desvíos en el código, reportarlos al

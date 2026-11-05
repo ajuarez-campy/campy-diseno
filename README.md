@@ -13,6 +13,19 @@ Es una skill que **se autoevalúa y aprende**:
 - `references/aprendizajes.md` guarda cada corrección o decisión de diseño con fecha y origen; la skill la lleva a la
   regla que corresponde en el mismo momento.
 
+## Para el equipo
+
+Esta skill es el **lineamiento de diseño de Campy**: lo que tiene que cumplir toda pantalla nueva o que se toque, en la
+web y en la Worker App, la haga quien la haga. Lo define Agustín (líder de frontend).
+
+- **Antes de diseñar o revisar una pantalla**, Claude la carga sola; si trabajás sin Claude, leé las «Reglas que no se
+  negocian» de `skills/campy-diseno/SKILL.md` y, para la app, «Vigente al 4/11/2026» en `references/mobile.md`.
+- **Revisar un PR de UI:** `references/checklist.md` (y el de la app en `mobile.md`).
+- **Lo que no está, se pregunta** a Agustín antes de codificar. Lo que decide otra persona queda anotado como
+  `[pendiente: confirmar con Agustín]` hasta que él lo confirme.
+- **Para proponer un cambio a la skill:** rama propia y PR a este repo, con la decisión y su fecha en
+  `references/aprendizajes.md`.
+
 ## Instalación
 
 ### Modo editable (recomendado: así la skill puede aprender)
@@ -47,7 +60,7 @@ Claude Code la usa sola al crear, rediseñar o revisar pantallas de Campy, o cua
 
 ```bash
 cd ~/.claude/skills/campy-diseno
-python3 scripts/autoevaluar.py                  # repos en ~/Escritorio/laburo/{campisoft,campyprov}
+python3 scripts/autoevaluar.py                  # por defecto busca ~/Escritorio/laburo/{campisoft,campyprov}
 CAMPISOFT=/ruta/campisoft CAMPYPROV=/ruta/campyprov python3 scripts/autoevaluar.py
 python3 scripts/autoevaluar.py --campisoft /ruta/al/worktree --campisoft-ref HEAD   # mirar una rama
 ```

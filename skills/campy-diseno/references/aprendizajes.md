@@ -81,9 +81,9 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-10-28 · [incorporado] · Un QR por persona: la credencial sirve para todo; nunca QR por orden, viaje o reserva · Agustín · SKILL.md regla 30
 - 2026-10-28 · [incorporado] · La app marca y mira; la gestión y los procesos administrativos son de la web · Agustín · SKILL.md regla 28
 - 2026-10-29 · [incorporado] · Nunca flechas de ruta («→») entre origen y destino: «A a B» o `Recorrido` · Agustín · SKILL.md regla 23
-- 2026-10-29 · [incorporado] · Horas con «hs» («14:00hs») y fecha entera («Viernes 6 de Noviembre») en Mi traslado · Agustín · SKILL.md regla 24 · [pendiente] si vale para toda la app
+- 2026-10-29 · [incorporado] · Horas con «hs» («14:00hs») y fecha entera («Viernes 6 de Noviembre») en Mi traslado · Agustín · SKILL.md regla 24 → decidido por Agustín 4/11: es regla de toda la Worker App
 - 2026-10-29 · [incorporado] · La barra de abajo de la app no se cambia aunque una maqueta dibuje otra · Agustín · SKILL.md regla 29
-- 2026-10-29 · [incorporado] · Lo encerrado en rojo en una captura sin texto es para sacar; con texto, manda el texto · Agustín · SKILL.md › Cómo trabaja el diseño Agustín
+- 2026-10-29 · [incorporado] · Lo encerrado en rojo en una captura sin texto es para sacar; con texto, manda el texto · Agustín · SKILL.md › Cómo se decide el diseño en Campy
 - 2026-10-29 · [incorporado] · Check In sin «Validación» y confirmación deslizando; Check Out con el mismo formato de hoja · Agustín · mobile.md › Por servicio
 - 2026-10-29 · [incorporado] · Arranque en navy con el logo (iOS y Android) y brillo de los colores del aro al abrir · Agustín · mobile.md › Escáner, login y arranque
 - 2026-10-30 · [incorporado] · Una escala de letra (`LetraCampy`) para toda la app menos el login; letra del teléfono de 0,85 a 1,5 (reemplaza 1,0–1,1) · Agustín · SKILL.md regla 16
@@ -112,6 +112,8 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-11-03 · [incorporado] · Jornadas en lista de a 7 días (sin calendario propio, sin paginación «‹ 1 2 3 ›», sin «Sin marca») · Agustín · mobile.md › Mi roster
 - 2026-11-03 · [incorporado] · Lavandería: «Mi cupo» sin barra, «?» de ayuda con pop-up de una oración, incidencias con `>` y detalle en pop-up · Agustín · mobile.md › Por servicio, SKILL.md regla 13
 - 2026-11-03 · [incorporado] · Check In: fechas de la estadía como línea de tiempo (`LineaEstadia`); sin la pastilla «Alojamiento activo» · Agustín · mobile.md › Por servicio
-- 2026-11-03 · [incorporado] · Animaciones de referencia (carpeta campy-animations) traducidas a código: QR escaneado y partida del viaje; Rive descartado · Agustín · SKILL.md › Cómo trabaja el diseño Agustín, mobile.md
+- 2026-11-03 · [incorporado] · Animaciones de referencia (carpeta campy-animations) traducidas a código: QR escaneado y partida del viaje; Rive descartado · Agustín · SKILL.md › Cómo se decide el diseño en Campy, mobile.md
 - 2026-11-04 · [incorporado] · El supervisor sí resuelve y gestiona desde la app (cambia la regla del 2/11) · Agustín · SKILL.md regla 28
 - 2026-11-04 · [incorporado] · Lo que falló y sigue abierto sale en un pop-up al entrar a la pantalla, no en un recuadro rojo en la hoja · Agustín · SKILL.md regla 22
+- 2026-11-04 · [incorporado] · «hs» en toda hora y fecha entera en toda la Worker App (antes solo en Mi traslado); la tarjeta del turno ya no usa la fecha corta · Agustín · SKILL.md regla 24 · [pendiente] si la web también lleva «hs»
+- 2026-11-04 · [incorporado] · La skill es también para el equipo: sin rutas ni enlaces personales; «Cómo se decide el diseño en Campy»; lo que decide otra persona queda `[pendiente: confirmar con Agustín]` · Agustín · SKILL.md, mobile.md, README.md

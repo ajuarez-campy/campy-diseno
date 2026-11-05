@@ -125,6 +125,8 @@ def desvios(repos: dict[str, tuple[Path, str]]) -> dict[str, list[str]]:
             ]
             out["Texto cortado con «...» en la Worker App (`TextOverflow.ellipsis`, regla 20)"] = buscar(
                 repo, ref, "TextOverflow.ellipsis", "worker-app/lib", fijo=True)
+            out["Fecha corta (`corta: true`) en la Worker App (regla 24: fecha entera)"] = buscar(
+                repo, ref, "corta: true", "worker-app/lib", fijo=True)
             out["Aviso con `ScaffoldMessenger` en la Worker App (va `avisoCampy`, regla 22)"] = buscar(
                 repo, ref, "ScaffoldMessenger", "worker-app/lib", fijo=True)
             out["Texto con paréntesis en la Worker App (regla 20; a revisar, puede ser un dato)"] = buscar(

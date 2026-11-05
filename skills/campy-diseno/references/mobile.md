@@ -10,7 +10,7 @@ Código: `worker-app/lib/theme.dart` (`CampyColors`, `campyTheme()`, `CampyCard`
 `worker-app/lib/widgets/ui.dart` (piezas propias), `worker-app/lib/widgets/proximamente.dart`,
 `worker-app/lib/widgets/cori_vivo.dart` (Cori con vida), `worker-app/lib/widgets/mi_qr.dart` y
 `worker-app/lib/screens/shell.dart` (barra inferior y vuelo de Cori). Maquetas:
-`/home/agustin/Escritorio/laburo/visual-app-mobile-campy/` (20 pantallas: Inicio en sitio y en descanso, Próximo
+las maquetas de Agustín de octubre de 2026 (pedírselas; 20 pantallas: Inicio en sitio y en descanso, Próximo
 traslado, Indicaciones, Pase, Servicios, Perfil, Notificaciones, Login, Check In ×3, Bienestar ×4, Lavandería,
 Preferencias, Nueva solicitud, Asistente).
 
@@ -30,7 +30,7 @@ descripciones de una opción que se explica sola). Se dejan solo los que avisan 
 ## Vigente al 4/11/2026 (manda sobre lo de abajo)
 
 Todo lo de esta sección lo decidió Agustín entre el 27/10 y el 4/11/2026 ([D]); el detalle de cada decisión está en el
-vault (`campy-vault/02 - Decisiones/Registro de decisiones.md`). Donde una tabla de más abajo dice otra cosa (pastel,
+registro de decisiones del vault de producto de Campy y en [aprendizajes.md](aprendizajes.md). Donde una tabla de más abajo dice otra cosa (pastel,
 colores por servicio, toast arriba, letra 1,0–1,1, login con «¿Olvidaste tu contraseña?»…), vale esto. El código de
 referencia está en las ramas de la Worker App del 3 y 4/11 (v1.53 a v1.62); `DosDatos` y `LineaEstadia` todavía no
 están en `main`.
@@ -46,6 +46,8 @@ están en `main`.
 - Avisos de «no hay nada» dentro de un mosaico («Sin estadía activa», «Sin comidas cargadas hoy»): chicos y en gris,
   nunca del tamaño de una cifra.
 - **Negrita solo para títulos** (regla 26): `w700` en el título del bloque y el dato principal; el resto `w400/w500`.
+- **Horas y fechas** (regla 24, 4/11): «14:00hs», «4hs», «1hs 20 min» y «Viernes 6 de Noviembre» en toda la app; la
+  tarjeta del turno del Inicio y los `fmtFecha(…, corta: true)` que quedan son desvíos a corregir al tocarlos.
 
 ### Color
 
@@ -339,7 +341,7 @@ tarjeta encima. Las medidas de sombra/borde de abajo quedan para esos casos.
 | Advertencias, urgencias, avisos sin conexión y estados pendientes | **`CampyColors.rojo`** (#DC2626, el de «Cerrar sesión»), texto, ícono, borde y fondo `rojoFondo`/`rojoBorde`; ya no ámbar. «Pendiente», «A confirmar», toasts de espera, «Datos guardados…», «Falta…», bajada vencida: todo rojo. Ámbar solo para las campanitas y lo que no es aviso (micrófono hablando, niveles, categorías) [D, Agustín 26/10/2026] | `theme.dart`, `colorTono` |
 | Acciones de una fila, de a pares | botones en **píldora** chicos (`botonPildoraCampy`: alto 36, `StadiumBorder`, 13.5 w600, fondo blanco y contorno del tono; apretado, fondo del tono): azul con borde `azulBorde` para la acción (Adjuntar foto / Ver respaldo), rojo con `rojoBorde` para cancelar. Van debajo de la fila con todo su ancho, de izquierda a derecha [D, Agustín 26/10/2026] | `roster.dart` `_solicitudFila` |
 | «Transporte» del Inicio | **[Reemplazado el 30/10/2026 por la tarjeta «Traslado · estado»: ver «Vigente al 4/11/2026»]** formato pase de embarque (maqueta A del 24/10): título azul + fecha larga + chip; salida y llegada 30 w700 con origen y destino del tramo, línea punteada `azulBordeSuave` con el bus y la duración; corte con medias muescas de 10; abajo 3 datos (Vehículo · Asiento · Sube en, flex 10/7/13, valor hasta 2 renglones). Sin botón desde el 26/10: se toca la tarjeta entera. Sin llegada «—» y sin duración. Chofer: Vehículo · Pasajeros. Columna angosta y sin traslado: `_ParaVos` [D, Agustín 26/10/2026] | `_BoletoTransporte` `home.dart` |
-| Fechas | **mes y día enteros** en toda la app: «8 de Noviembre», «26 de Octubre de 2026», «Miércoles» (`fmtFecha`, `Idioma.diaCorto`, `diaAnio`, `diaSemana`). Cortos solo los encabezados de calendario (Lun…Dom) y la tarjeta del turno del Inicio (`fmtFecha(…, corta: true)`) [D, Agustín 26/10/2026] | `theme.dart`, `idioma.dart` |
+| Fechas | **[4/11/2026: sin excepción, también la tarjeta del turno; y la hora con «hs»: SKILL.md regla 24]** **mes y día enteros** en toda la app: «8 de Noviembre», «26 de Octubre de 2026», «Miércoles» (`fmtFecha`, `Idioma.diaCorto`, `diaAnio`, `diaSemana`). Cortos solo los encabezados de calendario (Lun…Dom) y la tarjeta del turno del Inicio (`fmtFecha(…, corta: true)`) [D, Agustín 26/10/2026] | `theme.dart`, `idioma.dart` |
 | Tarjeta del turno del Inicio | **inmersiva**: la foto del campamento (`perfil.fotoCampamento`; sin ella `campamento-noche.jpg`) ocupa toda la tarjeta, radio 24, sombra `#081024` de 0 a 92 % desde arriba (0 · 5 % · 62 % · 92 %) para leer en blanco; arriba chip vidrio oscuro (rojo si es aviso) y Mi QR azul 56; abajo rótulo 13.5, número grande 40 w700 blanco, línea del turno y **línea de tiempo** Hoy · Ingreso · Salida (pista blanca 28 %, hecho en blanco, punteado del ingreso a la salida, ingreso relleno azul, hoy con halo) con la fecha en negrita y la hora debajo [D, Agustín 26/10/2026] | `_Hero`, `_LineaDelTurno` `home.dart` |
 | Tarjetas del Inicio | **[30/10/2026: ver «Vigente al 4/11/2026» › Inicio]** todas en el **azul Campy** (`CampyColors.azul`, el de «Transporte»): la del turno (Próximo turno, Mi estadía) lleva ícono, días, duración, días restantes, porcentaje y barra en azul; el botón del QR también, con el dibujo blanco [D, Agustín 26/10/2026, reemplaza el navy del 19, 23 y 26/10] | `home.dart` |
 | Servicios (pestaña) | **[Reemplazado el 28/10/2026 por los mosaicos blancos con un solo azul: ver «Vigente al 4/11/2026»]** ~~widgets de estado~~ a la manera de Apple Home: bloque radio 24, padding 16, **fondo pastel** del servicio (`CampyColors.pastelDe`, tono 100; oscuro tintado en modo oscuro) [D, Agustín 26/10/2026; antes lleno en tono 700 con letra blanca]; el dato del momento en 24 w700 tinta (30 a lo ancho), nombre 14 w600 en el tono fuerte (`CampyColors.serv*Fuerte` = colores de Cori del aro del logo: Comedor amarillo, Alojamiento coral, Lavandería lima, Bienestar lavanda; Transporte cielo [D, Agustín 26/10/2026]; Conectividad ya no está en Servicios), línea 13 gris, chip blanco con borde y letra del tono fuerte. Pictograma en el tono fuerte sin recuadro (30 en la grilla; a lo ancho, 190 al 12 % de fondo). Sin botón: se toca el bloque entero (0,98 al apretar). Comedor primero; con cantidad impar, el primero a todo el ancho; sin buscador ni contador [D, Agustín 26/10/2026] | `_WidgetServicio` `servicios.dart` |
@@ -610,7 +612,8 @@ Lo que no está activo se oculta o se muestra como «Próximamente»; nunca se m
 13. Texto completo: ni `TextOverflow.ellipsis` ni «...» ni paréntesis; nada cortado con letra 1,5; meses enteros.
 14. Letra con `LetraCampy`; negrita solo en títulos de bloque y el dato principal.
 15. Pop-ups cortos (título + una oración); avisos con `avisoCampy`, nunca `SnackBar` ni banner.
-16. Sin flechas de ruta («A a B» o `Recorrido`); horas «14:00hs» donde ya rige.
+16. Sin flechas de ruta («A a B» o `Recorrido`); toda hora «14:00hs», toda duración «4hs» y toda fecha entera
+    («Viernes 6 de Noviembre»), sin `corta: true`.
 17. Sin zócalos; filas tocables entre filas que informan con `>`; tarjetas sueltas sin botón ni `>`.
 18. Pantalla de servicio con `PantallaServicioAzul` (arco y piso solo en Transporte; hoja que no sube sola ni de más).
 19. El mismo componente para todos los perfiles (chofer y pasajero, mucama y encargado); probado en sitio, descanso y sin
