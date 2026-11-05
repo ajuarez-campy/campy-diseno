@@ -113,6 +113,8 @@ def desvios(repos: dict[str, tuple[Path, str]]) -> dict[str, list[str]]:
             repo, ref, "\"● |'● |>● ", *fuentes, *i18n, *arb)
         out[f"Botón o texto que termina en flecha «→» · {nombre}"] = buscar(
             repo, ref, r"→\"|→\s*</(button|Link|a)>|→'\)", *i18n, *arb, *fuentes)
+        out[f"Flecha de ruta «→» entre dos palabras en la Worker App · {nombre} (regla 23; en la web hay flujos con «→» que no son rutas)"] = buscar(
+            repo, ref, r"\w \S*→ \w|\} → \{", *arb)
         out[f"Placeholder o hint que termina en «…» · {nombre}"] = buscar(
             repo, ref, r"\"[A-Za-z]*([Pp]laceholder|[Bb]uscar|[Ss]earch|[Hh]int)[A-Za-z]*\": \".*(…|\.\.\.)\"", *i18n, *arb)
         if nombre == "campisoft":
@@ -121,6 +123,12 @@ def desvios(repos: dict[str, tuple[Path, str]]) -> dict[str, list[str]]:
                 l for l in buscar(repo, ref, r"\b(AlertDialog|SnackBar|Card)\(|elevation: [1-9]", "worker-app/lib")
                 if "/l10n/" not in l
             ]
+            out["Texto cortado con «...» en la Worker App (`TextOverflow.ellipsis`, regla 20)"] = buscar(
+                repo, ref, "TextOverflow.ellipsis", "worker-app/lib", fijo=True)
+            out["Aviso con `ScaffoldMessenger` en la Worker App (va `avisoCampy`, regla 22)"] = buscar(
+                repo, ref, "ScaffoldMessenger", "worker-app/lib", fijo=True)
+            out["Texto con paréntesis en la Worker App (regla 20; a revisar, puede ser un dato)"] = buscar(
+                repo, ref, r"^\s*\"[a-zA-Z]+\": \"[^\"]*\([^)\"]+\)", "worker-app/lib/l10n/app_es.arb")
     return out
 
 

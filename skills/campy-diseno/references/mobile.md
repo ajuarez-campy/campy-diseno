@@ -27,6 +27,199 @@ descripciones de una opción que se explica sola). Se dejan solo los que avisan 
 («Se cierra la sesión en tus otros teléfonos»), una regla (contraseña), un estado (sin conexión) o seguridad
 (emergencia, Cori). Botones con la acción corta: «Ver credencial», no «Ver credencial completa».
 
+## Vigente al 4/11/2026 (manda sobre lo de abajo)
+
+Todo lo de esta sección lo decidió Agustín entre el 27/10 y el 4/11/2026 ([D]); el detalle de cada decisión está en el
+vault (`campy-vault/02 - Decisiones/Registro de decisiones.md`). Donde una tabla de más abajo dice otra cosa (pastel,
+colores por servicio, toast arriba, letra 1,0–1,1, login con «¿Olvidaste tu contraseña?»…), vale esto. El código de
+referencia está en las ramas de la Worker App del 3 y 4/11 (v1.53 a v1.62); `DosDatos` y `LineaEstadia` todavía no
+están en `main`.
+
+### Letra y medidas
+
+- **Una escala para toda la app menos el login** (`LetraCampy`, `theme.dart`): número grande 42 · número 24 · saludo 20
+  · sección 17 · título 14 · texto 13 · chico 11,5 (escritos; se ven al 87 %). Nada de tamaños sueltos fuera de la escala.
+- Letra del teléfono **de 0,85 a 1,5** (`main.dart`, `textScaler.clamp`). Se prueba cada pantalla con 1,4 y 1,5.
+- **Nada cortado ni con «...»** (SKILL.md regla 20): `softWrap` con `maxLines: null`, `IntrinsicHeight` en filas de
+  tarjetas, `Wrap` para pares de datos que pueden no entrar (DNI y empresa de la credencial: lado a lado si entran, si no
+  la empresa baja). Las pestañas toman el ancho de su nombre: nunca se parte una palabra («Solicitude/s»).
+- Avisos de «no hay nada» dentro de un mosaico («Sin estadía activa», «Sin comidas cargadas hoy»): chicos y en gris,
+  nunca del tamaño de una cifra.
+- **Negrita solo para títulos** (regla 26): `w700` en el título del bloque y el dato principal; el resto `w400/w500`.
+
+### Color
+
+- **Un solo azul para los servicios** (28/10): nada de color por servicio ni pastel ni los colores del aro de Cori (todo
+  eso quedó reemplazado). Ícono en un cuadrado `CampyColors.azul` (#2563EB) con el dibujo blanco; letra en tinta.
+- **Escala de azules para lo que avanza** (30/10): lo que pasó `azulEscala1..3` (blue-200/300/400), lo de ahora azul
+  Campy, lo que viene gris claro. Comedor: comidas del día; Lavandería: las cuatro etapas hasta «Listo».
+- **Rojo** para advertencias, urgencias, sin conexión, pendientes y la entrada tarde (26/10, sigue). Verde solo para lo
+  resuelto o lo hecho (sello del Check In, incidencia resuelta, QR escaneado).
+- **Pastilla amarilla** del encabezado azul: en pastel (amber-200) y con un solo dato (la patente en Mi traslado y en
+  el chofer; la dieta en el Comedor).
+- Calendario de Mi roster: en sitio **azul Campy** con número y avión blancos; descanso **gris** (slate-200,
+  `grisDia`); sin asignación, blanco; traslado con el avión que baja (`planeLanding`, hacia casa) o sube
+  (`planeTakeoff`, hacia el sitio); **hoy** con un círculo alrededor del número, sin cuadrado ni borde de celda.
+- **Sin zócalos** (regla 25) y **chips sin punto** (regla 10).
+
+### Inicio = tablero del trabajador (30/10)
+
+Solo lo más importante: **roster, ingreso y transporte** (+ urgentes, en pausa). Lo de cada servicio (lavandería en
+curso, comedor por cerrar) va a Servicios, no al Inicio ni a Notificaciones.
+
+- **Cabecera** (1/11): el **nombre arriba, grande y en negrita**; debajo el saludo según la hora, chico y gris (sin
+  nombre, el saludo solo y grande). A la derecha la campana ámbar y, a su izquierda, **ayuda urgente**: el mismo
+  círculo blanco de 46 con sombra y solo el ícono de advertencia en rojo (sin el módulo SOS no está). Tocar el avatar
+  lleva al Perfil.
+- **Tarjeta del turno** con la foto a sangre (29/10, vuelve): «Día 6 de 14», «Turno 14 × 14 · Quedan 8 días», pista
+  blanca Ingreso · Salida; sin la pastilla del estado del ciclo; Mi QR azul arriba a la derecha.
+- **Jornada** (30/10, `jornada_ingreso.dart`): título «Jornada · estado» (el estado del mismo tamaño y en su color:
+  «Cierra en 8 min», «Tarde», «Llegada tarde»), Entrada y Salida en dos columnas separadas por una línea vertical, solo
+  rótulo y hora (horas en negro). Botón «Marcar ingreso» / «Marcar salida» en navy (rojo pasada la tolerancia); marcado,
+  el mismo botón gris desactivado «Marcaste ingreso a las 07:08hs». El pop-up de marcar es siempre el mismo
+  («¿Marcar tu ingreso?», «Se registra a las…»), también tarde. Sin círculos con tilde, sin «Registrada» ni «Pendiente»,
+  sin el casco. La salida se ofrece desde la hora de salida planeada.
+- **Traslado** (30–31/10, `traslado_inicio.dart`): mismo esqueleto que la Jornada: «Traslado · estado» (Sale en 3 días
+  gris; azul desde un día antes; En embarque y Llega en 40 min azul; A confirmar y contingencia rojo), origen y destino
+  con sus horas («—» si sube o baja en otra parada) y la barra viva con el micro (`HorarioConBarra`, reserva 120 px y los
+  rótulos bajan de línea); al pie, tras una línea fina, la fecha entera en gris y el asiento en azul. Se toca entera,
+  sin botón ni `>`. Finalizado, cancelado o sin traslado: no está.
+
+### Servicios: mosaicos (28/10 y 30/10)
+
+Mosaicos blancos de distinto tamaño (bento, `widgets/mosaicos.dart`), cada uno con el ícono en un cuadrado azul Campy y
+su dato grande (franja del día del comedor que avanza con la hora, el número de la habitación, etapas de la lavandería,
+la ruta del transporte con línea **recta por tierra y en parábola solo para el avión**). Entran Comedor, Alojamiento,
+Lavandería, Transporte, Bienestar y Ayuda. **Entra en la pantalla sin desplazar**: las filas se reparten el alto y cada
+mosaico la llena (`MosaicoServicio.llenar`); si el dato no entra, se achica adentro sin cortarse (solo con filas de menos
+de 118 vuelve a desplazarse). Al tocar uno, crece a pantalla completa en su pantalla azul.
+
+### Pantallas azules de servicio (`PantallaServicioAzul`, `widgets/servicio_azul.dart`)
+
+Comedor, Hospedaje (Check In/Out), Actividades, Soporte, Lavandería y Mi traslado (también la del chofer) comparten una
+sola composición (`ComposicionAzul`); una pantalla nueva la usa, no arma su propio azul.
+
+- **Azul arriba** (mitad de la pantalla, 340–470): título grande, el dato principal debajo cuando corresponde («Habitación
+  12», el plato que sigue, la empresa y la patente en Mi traslado), la pastilla amarilla y el **dibujo** del servicio en
+  el mismo recuadro apoyado en el mismo piso. El azul es un **cielo que sigue la hora** (`widgets/cielo.dart`: noche con
+  estrellas y luna, amanecer y atardecer cálidos, mediodía azul Campy), aplicado como luz sobre la escena, nunca como
+  fondo detrás (los PNG tienen partes semitransparentes). Dibujos: recortes de las imágenes de Agustín; el del Comedor
+  cambia con la comida (desayuno, almuerzo con vapor, merienda, cena); Lavandería con el lavarropas y una canasta a cada
+  lado (`EscenaLavanderia`).
+- **Arco con dos pines y línea punteada del piso: solo en Transporte** (`ArcoRuta` con la silueta del vehículo,
+  `SiluetaTransporte`; sin tipo conocido, solo la línea). Los otros servicios no llevan ruta ni línea de piso.
+- **Hoja blanca abajo**, sin ícono ni encabezado arriba del título. Se sube arrastrándola, nunca sola; su tope queda 111
+  px bajo la barra del título, así el dibujo queda tapado entero y asoma la credencial; **no se desliza de más** ni sube
+  si no hay más que mostrar.
+- **Dentro de la hoja**, los datos ordenados por importancia: `DosDatos` (dos datos lado a lado con una línea fina; 28
+  para lo que se busca primero, 17 para lo de lectura), bloques con título de 15 en negrita («Estadía», «Mi cupo»,
+  «Incidencias») separados por una línea fina y aire; grilla `DatosServicio` de dos columnas (rótulo arriba, valor
+  regular abajo, `sinFondo`); filas `FilaServicio` con el estado a la derecha en su color y `>` si se tocan. La fila
+  destacada (la comida de ahora) se distingue solo con el fondo celeste: **sin «Ahora» ni «Sigue»**.
+- **Credencial al pie, tipo Wallet** (`PaseWallet`, `pase.dart`): asoma desde el primer momento; guardada se ve su
+  cabecera. Cara de credencial, no de pase: cabecera azul con la marca y el servicio, el nombre grande, cargo y DNI en
+  una línea, el QR grande (el único de la persona) y, si corresponde, lo del servicio («Orden #L-0035» y las prendas para
+  retirar). Sin avatar con iniciales, sin troqueles, sin datos repetidos de la hoja; «Se renueva en…» solo sin señal, en
+  rojo. Se vuelve a medir cuando cambia de tamaño.
+
+### Por servicio
+
+- **Comedor** (2–3/11): sin cabecera en la hoja; el plato que sigue en el azul y la dieta en la pastilla; la hoja con el
+  día y sus comidas (filtro de días con el formato de Mi roster) y, tras una línea fina, «Mi vianda» y «Mis
+  preferencias» con el mismo círculo celeste de las comidas. Las dos abren **pop-up**: Mi vianda con una sección por
+  vianda («Vianda del almuerzo», «Vianda del traslado») y «Próximas viandas» (sin las entregadas; el trabajador no pide
+  viandas); Mis preferencias con las restricciones en chips rojos y lo que evita en chips grises, y las acciones al
+  final. Una sola puerta para pedir un cambio: «Nueva solicitud» (tipo del catálogo de dietas de la web). Las
+  solicitudes se siguen en Soporte.
+- **Lavandería** (1–3/11): azul solo con el título y el dibujo. Hoja: «Tu ropa» («6 prendas listas» grande y debajo la
+  orden y «Lista desde hoy 07:42hs» con `DosDatos`), «Mi cupo» sin barra («0 /3 órdenes esta semana», rojo si se
+  agotó) con un «?» chico que abre la regla en un pop-up de una oración, e «Incidencias» con su título; cada incidencia
+  con `>` abre su detalle en un pop-up (Estado, Orden, Prendas, Resolución, Última novedad). El número de orden va en la
+  credencial. Las incidencias se quedan en Lavandería (no hay módulo Connect que las junte).
+- **Hospedaje / Check In y Check Out** (29/10–3/11): sin el paso «Validación»: abre en la cama propuesta y se confirma
+  **deslizando** (`DeslizarParaConfirmar`: píldora navy, perilla blanca, candado que se abre). Las fechas de la estadía
+  como **línea de tiempo** (`LineaEstadia`: «Ingreso · Hoy» a la izquierda, «Salida · 12 de Noviembre» a la derecha,
+  línea punteada entre un círculo vacío y uno lleno). Completado: el sello, «Check In completado» y la fecha con la hora,
+  sin la pastilla «Alojamiento activo». Check Out con el mismo formato (pasos «Antes de salir» y «Confirmación», sello
+  verde, cama liberada); antes de la fecha, pop-up «Salida anticipada» y motivo.
+- **Mi traslado** (31/10–1/11): la grilla de dos columnas sin recuadros de color (Fecha, Traslado, Asiento, Estado), sin
+  el nombre del pasajero. «Punto de encuentro» con `>` abre el **mapa** fuera del campamento (`mapa_encuentro.dart`,
+  panel fijo sin scroll: nombre, dirección con un ícono chico para copiarla, Salida, Unidad, Empresa y un único botón
+  «Cómo llegar»); en el campamento, la foto. Sin «Informar un impedimento». El chofer ve el mismo recorrido (`ArcoRuta`).
+- **Soporte** (2–3/11): primero «¿Sobre qué es?» (abrir un caso) y al fondo «Mis casos» con el filtro Casos abiertos /
+  Historial; filas sin negrita.
+- **Embarque por QR** (2/11): cada lectura muestra el pase de embarque de Mi traslado sobre la cámara y se rompe por el
+  troquel (talón «A bordo»). La nómina del chofer es de solo lectura: «A bordo» / «Sin embarcar» / «Ausente», los que
+  faltan primero.
+
+### Mi roster (30/10–3/11)
+
+- Pestañas **Mi ciclo · Jornadas · Solicitudes**. El único calendario está en Mi ciclo.
+- **Próximos ciclos**: una tarjeta blanca por ciclo con una fila por tramo (En sitio, Descanso) separadas por una línea
+  fina, el tramo en su color y de qué fecha a qué fecha; sin «14 días», sin rótulo arriba de cada par, sin zócalo.
+- **Jornadas**: arriba la jornada de hoy con «Marcar ingreso/salida» (la misma tarjeta del Inicio); debajo «Próximas
+  jornadas» y «Jornadas pasadas» en **lista** (fecha, día, entrada y salida; entrada tarde en rojo; «—» sin marca),
+  **de a 7 días** (1–7, 8–14, 15–21, 22–28, 29–fin) con chips y deslizando; nada de paginación «‹ 1 2 3 ›» ni tramos.
+  No existe el estado «Sin marca».
+- **Mis solicitudes**: lista simple, no chat. Cada tarjeta con ícono neutro azul, el tipo como título, las fechas en gris,
+  la **palabra del estado en su color** (no solo color) y `>`; la que espera respuesta, sobre celeste y arriba. En
+  «Todas», encabezados de grupo (Necesita tu respuesta, En revisión, Resueltas). El detalle es un formulario (campo,
+  Adjuntar foto, «Enviar respuesta»). **Nueva solicitud**: pop-up chico sin rótulos ni contador; licencia y permiso
+  eligen entre los códigos que habilitó el sitio (con uno solo no se pregunta); el respaldo solo si el código lo pide.
+
+### Mi Área: diseño global (2/11)
+
+Una sola pieza para los nueve roles + un adaptador por rol. Secciones con título descriptivo («Habilitaciones para
+renovar», «Reportes abiertos») y debajo un **carrusel de `TarjetaCarrusel`** (sin ícono, la pastilla de estado arriba a la
+derecha, título, pie). Orden: «Mi trabajo» (lo propio del puesto: OT, viaje, habitaciones), informes (habilitaciones,
+documentación, alertas del equipo) y reportes (casos de Connect que abrió la persona). **Urgente es un atributo**: rojo y
+primero. Sin «Reportar hallazgo». El chofer sin habilitación no hace viajes (ve los pasados y qué renovar). Hotelería
+(4/11): mucama y encargado con pestañas por estado (Pendientes · En curso · En revisión · Hechas · Incidencias); lo que
+falló sale en pop-up al entrar (regla 22). **Pendiente:** rediseñar la OT entera (`ot.dart`: iniciar, pasos, evidencias,
+cierre) con maqueta antes.
+
+### Notificaciones = buzón (2–3/11)
+
+Historial de los avisos que llegaron (14 días, de la bandeja de la API): solo hechos, nunca estado (sale «Tu día, al
+momento» y «En curso» de servicios). Tocar marca leído y abre; «Marcar leídas»; deslizar oculta. Lo urgente y Transporte
+no van acá (van al Inicio). La hora **sin píldora**, chica y gris a la derecha del módulo («19:01hs», «Hace 5 min»); el
+texto usa todo el ancho.
+
+### Pop-ups, avisos y volver
+
+- `avisoCampy` abre un **pop-up de Campy** (ícono por tono, rojo lo crítico, título corto y detalle, «Cerrar»); reemplaza
+  al toast de arriba y a todos los `SnackBar` (regla 22). Detalle de una oración (regla 21). Un pop-up de ayuda o de
+  datos (Mi vianda) puede ir sin ícono ni título y arrancar directo con su primera sección.
+- `BotonVolver` (1/11): sobre blanco o gris, círculo blanco de 44 con sombra suave; sobre azul o navy, solo la flecha
+  blanca; márgenes de 8 en fondos oscuros. Perfil, Notificaciones y Ajustes llevan una franja fija del color de la
+  cabecera bajo la barra de estado para que el contenido no pase por detrás de la hora.
+
+### Escáner, login y arranque
+
+- **Un solo escáner** (`widgets/escaner_qr.dart`, 30/10) para Seguridad, Recepción, chofer, Lavandería, Comedor y el
+  ingreso con código: cámara a pantalla completa con velo navy al 62 %, ventana cuadrada radio 24 (68 % del lado corto,
+  200–300) con cuatro esquinas blancas redondeadas, título con ícono arriba a la izquierda y la cruz a la derecha, brillo
+  azul que recorre la ventana (quieto con «reducir movimiento»). Al leer bien: punto → círculo verde → tilde (1,15 s,
+  `_ExitoEscaner`), salvo en el embarque.
+- **Login** (30/10): título «Tu operación, siempre con vos.» en 50 y «BIENVENIDO» en 14 sobre el navy con la textura
+  topográfica de la web (`topo-navy.svg`); una sola entrada **«¿No podés ingresar?»** centrada bajo «Iniciar sesión»
+  (pop-up con «Olvidé mi contraseña» y «Olvidé mi correo», que solo avisan a quien administra el acceso; la app no manda
+  mails). Sin «Mantener mi sesión iniciada» ni «Contactar a Soporte». «Ingresar con un código» y «Elegí tu contraseña»
+  con el mismo formato.
+- **Arranque** (29/10): pantalla de inicio de iOS y Android en navy con el logo (153 × 34); el logo aparece con un brillo
+  de los colores del aro, la palabra se esfuma y el aro viaja al centro (solo al abrir).
+- **Animaciones** (3/11): partida del viaje (la hoja baja, el vehículo retrocede y sale, humo solo de llanta al
+  arrancar, pop-up «Viaje en curso» que se cierra solo); estela del avión y rayas de viento en marcha. Todas con
+  «reducir movimiento».
+
+### Barra de abajo y Cori
+
+- La barra **no se cambia** (regla 29). Sin franja debajo: el contenido pasa por detrás de la barra flotante
+  (`extendBody`) y cada pestaña suma su alto al margen de abajo (30/10).
+- Cori: sube y se queda en el mismo punto (`AsistenteScreen.bajadaCori`, sin salto final); la hoja blanca de su vuelo
+  pasa por detrás de la barra. Caja de escritura con **un solo botón** que es micrófono con el campo vacío y «Enviar»
+  (flecha arriba) apenas se escribe, como WhatsApp (1/11).
+
 ## Tipografía
 
 **Meses con mayúscula inicial** [D, Agustín 17/10/2026]: en español «17 Oct», «Octubre 2026», «viernes 17 de Octubre»
@@ -114,7 +307,7 @@ Los **cinco tonos con significado** de la web valen igual (SKILL.md). En Move: c
 (aprobado) · a confirmar → amber · en embarque, en viaje → **blue** (en curso) · finalizado, cancelado → **slate** ·
 contingencia → amber. Rojo solo para crítico o riesgo; el SOS es rojo porque es una emergencia.
 
-Colores de servicio (íconos y títulos en Servicios): Alojamiento `azul`, Comedor naranja `#EA580C`, Lavandería
+[28/10/2026: los servicios ya no tienen color propio, todo en el azul Campy] ~~Colores de servicio (íconos y títulos en Servicios):~~ Alojamiento `azul`, Comedor naranja `#EA580C`, Lavandería
 `#0891B2`, Bienestar `#7C3AED`, Conectividad `#0EA5E9`.
 
 **Sin modo oscuro [D, Agustín 19/10/2026]:** la app es siempre clara; se quitaron Apariencia y lib/apariencia.dart (ya no existe). La paleta oscura de `CampyColors` quedó en el código (getters con `ModoColor.oscuro`, que vale siempre `false`) pero no se usa. Lo que sigue es histórico. **Antes (17/10):** sigue al teléfono por defecto y se elige en Configuración › Apariencia
@@ -125,7 +318,7 @@ superficie #111A2E, superficie elevada #17223A, borde #24324D, borde de control 
 grisTexto #C3CDDC, grisClaro #7385A3; tonos con texto más claro (verde #34D399, ámbar #FBBF24) sobre fondos oscuros
 tintados. Fondos de superficie: `CampyColors.superficie` (nunca `Colors.white`); **QR siempre sobre blanco con módulos
 navy** (`CampyColors.blanco`, `QrImageView(backgroundColor: Colors.white)`). Barra de estado: `estiloBarraEstado`.
-**Tamaño de letra del teléfono:** se respeta acotado a 1,0–1,1 (`builder` de `MaterialApp`); con 1,3 se veía gigante en Android [D, Agustín 20/10/2026].
+**Tamaño de letra del teléfono:** [30/10/2026: ahora de 0,85 a 1,5] ~~se respeta acotado a 1,0–1,1~~ (`builder` de `MaterialApp`); con 1,3 se veía gigante en Android [D, Agustín 20/10/2026].
 
 ## Formas, bordes y sombras
 
@@ -145,13 +338,13 @@ tarjeta encima. Las medidas de sombra/borde de abajo quedan para esos casos.
 | Barra de avance (color) | en el Inicio, relleno **`CampyColors.azul`** como el resto de la tarjeta, riel `grisFondo` [D, Agustín 26/10/2026; antes navy, 23/10]. Fuera del Inicio: preguntar. Ej.: `_BarraAvance` `home.dart` |
 | Advertencias, urgencias, avisos sin conexión y estados pendientes | **`CampyColors.rojo`** (#DC2626, el de «Cerrar sesión»), texto, ícono, borde y fondo `rojoFondo`/`rojoBorde`; ya no ámbar. «Pendiente», «A confirmar», toasts de espera, «Datos guardados…», «Falta…», bajada vencida: todo rojo. Ámbar solo para las campanitas y lo que no es aviso (micrófono hablando, niveles, categorías) [D, Agustín 26/10/2026] | `theme.dart`, `colorTono` |
 | Acciones de una fila, de a pares | botones en **píldora** chicos (`botonPildoraCampy`: alto 36, `StadiumBorder`, 13.5 w600, fondo blanco y contorno del tono; apretado, fondo del tono): azul con borde `azulBorde` para la acción (Adjuntar foto / Ver respaldo), rojo con `rojoBorde` para cancelar. Van debajo de la fila con todo su ancho, de izquierda a derecha [D, Agustín 26/10/2026] | `roster.dart` `_solicitudFila` |
-| «Transporte» del Inicio | formato **pase de embarque** (maqueta A del 24/10): título azul + fecha larga + chip; salida y llegada 30 w700 con origen y destino del tramo, línea punteada `azulBordeSuave` con el bus y la duración; corte con medias muescas de 10; abajo 3 datos (Vehículo · Asiento · Sube en, flex 10/7/13, valor hasta 2 renglones). Sin botón desde el 26/10: se toca la tarjeta entera. Sin llegada «—» y sin duración. Chofer: Vehículo · Pasajeros. Columna angosta y sin traslado: `_ParaVos` [D, Agustín 26/10/2026] | `_BoletoTransporte` `home.dart` |
+| «Transporte» del Inicio | **[Reemplazado el 30/10/2026 por la tarjeta «Traslado · estado»: ver «Vigente al 4/11/2026»]** formato pase de embarque (maqueta A del 24/10): título azul + fecha larga + chip; salida y llegada 30 w700 con origen y destino del tramo, línea punteada `azulBordeSuave` con el bus y la duración; corte con medias muescas de 10; abajo 3 datos (Vehículo · Asiento · Sube en, flex 10/7/13, valor hasta 2 renglones). Sin botón desde el 26/10: se toca la tarjeta entera. Sin llegada «—» y sin duración. Chofer: Vehículo · Pasajeros. Columna angosta y sin traslado: `_ParaVos` [D, Agustín 26/10/2026] | `_BoletoTransporte` `home.dart` |
 | Fechas | **mes y día enteros** en toda la app: «8 de Noviembre», «26 de Octubre de 2026», «Miércoles» (`fmtFecha`, `Idioma.diaCorto`, `diaAnio`, `diaSemana`). Cortos solo los encabezados de calendario (Lun…Dom) y la tarjeta del turno del Inicio (`fmtFecha(…, corta: true)`) [D, Agustín 26/10/2026] | `theme.dart`, `idioma.dart` |
 | Tarjeta del turno del Inicio | **inmersiva**: la foto del campamento (`perfil.fotoCampamento`; sin ella `campamento-noche.jpg`) ocupa toda la tarjeta, radio 24, sombra `#081024` de 0 a 92 % desde arriba (0 · 5 % · 62 % · 92 %) para leer en blanco; arriba chip vidrio oscuro (rojo si es aviso) y Mi QR azul 56; abajo rótulo 13.5, número grande 40 w700 blanco, línea del turno y **línea de tiempo** Hoy · Ingreso · Salida (pista blanca 28 %, hecho en blanco, punteado del ingreso a la salida, ingreso relleno azul, hoy con halo) con la fecha en negrita y la hora debajo [D, Agustín 26/10/2026] | `_Hero`, `_LineaDelTurno` `home.dart` |
-| Tarjetas del Inicio | todas en el **azul Campy** (`CampyColors.azul`, el de «Transporte»): la del turno (Próximo turno, Mi estadía) lleva ícono, días, duración, días restantes, porcentaje y barra en azul; el botón del QR también, con el dibujo blanco [D, Agustín 26/10/2026, reemplaza el navy del 19, 23 y 26/10] | `home.dart` |
-| Servicios (pestaña) | **widgets de estado** a la manera de Apple Home: bloque radio 24, padding 16, **fondo pastel** del servicio (`CampyColors.pastelDe`, tono 100; oscuro tintado en modo oscuro) [D, Agustín 26/10/2026; antes lleno en tono 700 con letra blanca]; el dato del momento en 24 w700 tinta (30 a lo ancho), nombre 14 w600 en el tono fuerte (`CampyColors.serv*Fuerte` = colores de Cori del aro del logo: Comedor amarillo, Alojamiento coral, Lavandería lima, Bienestar lavanda; Transporte cielo [D, Agustín 26/10/2026]; Conectividad ya no está en Servicios), línea 13 gris, chip blanco con borde y letra del tono fuerte. Pictograma en el tono fuerte sin recuadro (30 en la grilla; a lo ancho, 190 al 12 % de fondo). Sin botón: se toca el bloque entero (0,98 al apretar). Comedor primero; con cantidad impar, el primero a todo el ancho; sin buscador ni contador [D, Agustín 26/10/2026] | `_WidgetServicio` `servicios.dart` |
-| «Para vos» del Inicio | **Transporte fijo arriba** + dos filas deslizables «Hoy» y «Tu estadía» [D, Agustín 26/10/2026]: cada servicio aparece solo cuando tiene algo (Comedor abierto o próximo; vianda de hoy; reserva de hoy; orden de lavandería; caso abierto; Conectividad solo si la señal es mala) y con su módulo. Todas **vivas** como «Mi alojamiento» (`TarjetaViva` de `widgets/viva.dart`): **fondo pastel** (`CampyColors.pastelDe`) con acento en el tono fuerte de su servicio [D, Agustín 26/10/2026; antes llenas con letra blanca] (`CampyColors.serv*Fuerte`: Comedor `#C2410C`, Lavandería `#0E7490`, Alojamiento azul marino `#1E3A8A`, Bienestar violeta, Transporte `azul`, Ayuda fucsia `ayudaFuerte` `#BE185D`, Conectividad `rojo`; cada una distinta) y **una sola tarjeta de comida** (el comedor con la vianda de hoy en una franja abajo; sin comedor, la vianda sola), radio 24, padding 18, rótulo 14 w600 en el tono fuerte (`cabViva(color:)`), chip blanco con borde del tono fuerte (`vidrioViva(color:)`; rojo lleno si es aviso), dato grande w700 tinta (27; Comedor 30, vianda 46), secundario gris, dibujo del servicio 160 al 12 % del tono fuerte abajo a la derecha, avances en el tono fuerte sobre pista al 20 % (segmentos de 6 o nodos de 24 llenos con tilde blanco). La tarjeta de arriba de Mi Área (`HeroArea`) usa la misma pieza. La tarjeta del turno sigue sobre la foto. Filas: tarjetas de `ancho - 32 - 46` (asoma la siguiente), imán por tarjeta (`_ImanPorTarjeta`), puntitos 6/18; una sola tarjeta a todo el ancho; la fila con aviso sube. Reemplaza «todas las tarjetas del Inicio en azul» | `_ParaVosSeccion`, `_Fila`, `_Viva`, `_Nodos` `home.dart` |
-| Cabecera del Inicio | saludo y debajo la fecha entera «Lunes, 26 de Octubre», sin «Hoy» (`Idioma.diaSemanaLargo`); campana **ámbar entera** (borde de 1,25 y dibujo; `BotonRedondo(borde: CampyColors.ambar)`), como la de Notificaciones [D, Agustín 26/10/2026] | `barraCampy` `ui.dart`, `hoyCabecera` |
+| Tarjetas del Inicio | **[30/10/2026: ver «Vigente al 4/11/2026» › Inicio]** todas en el **azul Campy** (`CampyColors.azul`, el de «Transporte»): la del turno (Próximo turno, Mi estadía) lleva ícono, días, duración, días restantes, porcentaje y barra en azul; el botón del QR también, con el dibujo blanco [D, Agustín 26/10/2026, reemplaza el navy del 19, 23 y 26/10] | `home.dart` |
+| Servicios (pestaña) | **[Reemplazado el 28/10/2026 por los mosaicos blancos con un solo azul: ver «Vigente al 4/11/2026»]** ~~widgets de estado~~ a la manera de Apple Home: bloque radio 24, padding 16, **fondo pastel** del servicio (`CampyColors.pastelDe`, tono 100; oscuro tintado en modo oscuro) [D, Agustín 26/10/2026; antes lleno en tono 700 con letra blanca]; el dato del momento en 24 w700 tinta (30 a lo ancho), nombre 14 w600 en el tono fuerte (`CampyColors.serv*Fuerte` = colores de Cori del aro del logo: Comedor amarillo, Alojamiento coral, Lavandería lima, Bienestar lavanda; Transporte cielo [D, Agustín 26/10/2026]; Conectividad ya no está en Servicios), línea 13 gris, chip blanco con borde y letra del tono fuerte. Pictograma en el tono fuerte sin recuadro (30 en la grilla; a lo ancho, 190 al 12 % de fondo). Sin botón: se toca el bloque entero (0,98 al apretar). Comedor primero; con cantidad impar, el primero a todo el ancho; sin buscador ni contador [D, Agustín 26/10/2026] | `_WidgetServicio` `servicios.dart` |
+| «Para vos» del Inicio | **[Reemplazado el 30/10/2026: el Inicio es roster, Jornada y Traslado; ver «Vigente al 4/11/2026»]** Transporte fijo arriba + dos filas deslizables «Hoy» y «Tu estadía» [D, Agustín 26/10/2026]: cada servicio aparece solo cuando tiene algo (Comedor abierto o próximo; vianda de hoy; reserva de hoy; orden de lavandería; caso abierto; Conectividad solo si la señal es mala) y con su módulo. Todas **vivas** como «Mi alojamiento» (`TarjetaViva` de `widgets/viva.dart`): **fondo pastel** (`CampyColors.pastelDe`) con acento en el tono fuerte de su servicio [D, Agustín 26/10/2026; antes llenas con letra blanca] (`CampyColors.serv*Fuerte`: Comedor `#C2410C`, Lavandería `#0E7490`, Alojamiento azul marino `#1E3A8A`, Bienestar violeta, Transporte `azul`, Ayuda fucsia `ayudaFuerte` `#BE185D`, Conectividad `rojo`; cada una distinta) y **una sola tarjeta de comida** (el comedor con la vianda de hoy en una franja abajo; sin comedor, la vianda sola), radio 24, padding 18, rótulo 14 w600 en el tono fuerte (`cabViva(color:)`), chip blanco con borde del tono fuerte (`vidrioViva(color:)`; rojo lleno si es aviso), dato grande w700 tinta (27; Comedor 30, vianda 46), secundario gris, dibujo del servicio 160 al 12 % del tono fuerte abajo a la derecha, avances en el tono fuerte sobre pista al 20 % (segmentos de 6 o nodos de 24 llenos con tilde blanco). La tarjeta de arriba de Mi Área (`HeroArea`) usa la misma pieza. La tarjeta del turno sigue sobre la foto. Filas: tarjetas de `ancho - 32 - 46` (asoma la siguiente), imán por tarjeta (`_ImanPorTarjeta`), puntitos 6/18; una sola tarjeta a todo el ancho; la fila con aviso sube. Reemplaza «todas las tarjetas del Inicio en azul» | `_ParaVosSeccion`, `_Fila`, `_Viva`, `_Nodos` `home.dart` |
+| Cabecera del Inicio | **[1/11/2026: nombre arriba grande y saludo debajo, ayuda urgente junto a la campana; ver «Vigente al 4/11/2026»]** saludo y debajo la fecha entera «Lunes, 26 de Octubre», sin «Hoy» (`Idioma.diaSemanaLargo`); campana **ámbar entera** (borde de 1,25 y dibujo; `BotonRedondo(borde: CampyColors.ambar)`), como la de Notificaciones [D, Agustín 26/10/2026] | `barraCampy` `ui.dart`, `hoyCabecera` |
 | botón `rounded-[20px]` | `circular(20)` |
 | Sombra de tarjeta | `[BoxShadow(color: Color(0x0A0F1E3C), blurRadius: 2, offset: Offset(0, 1)), BoxShadow(color: Color(0x240F1E3C), blurRadius: 28, spreadRadius: -18, offset: Offset(0, 10))]` |
 | Sombra de tarjeta en hover | `0x0F0F1E3C` 2/(0,1) + `0x380F1E3C` blur 32, spread -16, (0,14) → en móvil, mientras se aprieta |
@@ -274,8 +467,8 @@ avioncito de «Enviar». **Los botones van solo con el texto** [D, Agustín 19/1
 | Modal / drawer (piezas.md › Modal; `FormSection.tsx:34-60`, `ShiftColorConfigPage.tsx:499-524`) | en móvil, **hoja inferior** [D, slice E]: radio 16 arriba, fondo blanco, `barrierColor 0x660F172A`, sombra `shadow-2xl`. **Cabecera navy en degradé** (`LinearGradient(topLeft → bottomRight, [navySuave, navy])`, padding 24/24/24/20): título 18 w700 blanco `letterSpacing -0.36`, descripción 13 blanco 60 % `height 1.375`, X 32 × 32 radio 8 con ícono 18 blanco 60 % (apretada blanco 10 %). Cuerpo padding 20, bloques a 20. Pie: «Pie de hoja o modal». Esta cabecera vale para toda hoja y modal [D, 17/10/2026]; la sólida de `FoodModal.tsx:46-54` es un desvío | no existe: crear `hojaCampy(titulo, descripcion, cuerpo, pie)`. Hojas blancas sin cabecera: `ui.dart:98-139, 480-492`, `equipo.dart:71-143`, `mi_area.dart:179-205`, `notificaciones.dart:112-129`, `ui.dart:302-340` (fondo `#EFF4FF`) ✗ |
 | Confirmación (estados.md › Avisos) | `hojaCampy` con título «¿…?», una oración en la descripción y pie Cancelar + confirmar. Destructiva: el confirmar es `botonPeligroCampy` (contorno rojo) **[resuelto]**, ver «Botones» | `confirmarCampy` `ui.dart:90-141` (sin cabecera navy, radio 24, título 18 w800) ✗; `AlertDialog` de Material: `shell.dart:136-149`, `mi_area.dart:222-241` ✗ |
 | Formulario corto | `hojaCampy` con un `inputCampy` multilínea y el pie | `hojaTextoCampy` `ui.dart:469-559` (sin cabecera navy, título 17 w800, «Volver» como enlace debajo) ✗ casi |
-| Toast (`Toast.tsx:44-90`) | fondo y texto por tipo: éxito `#D1FAE5`/`#064E3B`, error `#FEE2E2`/`#7F1D1D`, advertencia `#FEF3C7`/`#78350F`, info `#E0E7FF`/`#312E81`; borde 1 del color del estado al 30 % (`0x4D10B981`, `0x4DEF4444`, `0x4DF59E0B`, `0x4D6366F1`); radio 16, padding h16 v12, sombra `shadow-lg`; ícono 18 (`check_circle_outline`, `error_outline`, `warning_amber_rounded`, `info_outline`), título 14 w600, detalle 12 al 90 %, X 16 al 60 %; dura 5 s; se apilan con 8 de separación. Lugar: arriba, a la altura de la barra de estado + 64, márgenes 16; un toast nuevo reemplaza al anterior, entra con un fundido de 180 ms, vibra según el tono y el texto va en 14 w600 (`avisoCampy`) | `avisoCampy` `ui.dart:406-462`: fondo sólido `ink` o del tono con texto blanco 13 w600, radio 12, sin ícono ni X, 3 s, abajo ✗ |
-| Banner de alerta de sitio | franja a todo el ancho, fondo `rojo` (crítico) o `ambar` (pendiente), ícono 20 blanco, texto 12.5 w600 blanco en una línea | `shell.dart:179-224, 322-357` ✓ forma; `naranja` en vez de `ambar` (`shell.dart:200`) y w800 ✗ |
+| Toast (`Toast.tsx:44-90`) | **[En la app, desde el 2/11/2026, todo aviso es un pop-up de Campy (`avisoCampy`), no un toast: SKILL.md regla 22]** fondo y texto por tipo: éxito `#D1FAE5`/`#064E3B`, error `#FEE2E2`/`#7F1D1D`, advertencia `#FEF3C7`/`#78350F`, info `#E0E7FF`/`#312E81`; borde 1 del color del estado al 30 % (`0x4D10B981`, `0x4DEF4444`, `0x4DF59E0B`, `0x4D6366F1`); radio 16, padding h16 v12, sombra `shadow-lg`; ícono 18 (`check_circle_outline`, `error_outline`, `warning_amber_rounded`, `info_outline`), título 14 w600, detalle 12 al 90 %, X 16 al 60 %; dura 5 s; se apilan con 8 de separación. Lugar: arriba, a la altura de la barra de estado + 64, márgenes 16; un toast nuevo reemplaza al anterior, entra con un fundido de 180 ms, vibra según el tono y el texto va en 14 w600 (`avisoCampy`) | `avisoCampy` `ui.dart:406-462`: fondo sólido `ink` o del tono con texto blanco 13 w600, radio 12, sin ícono ni X, 3 s, abajo ✗ |
+| Banner de alerta de sitio **[2/11/2026: nada de banners en la app, regla 22]** | franja a todo el ancho, fondo `rojo` (crítico) o `ambar` (pendiente), ícono 20 blanco, texto 12.5 w600 blanco en una línea | `shell.dart:179-224, 322-357` ✓ forma; `naranja` en vez de `ambar` (`shell.dart:200`) y w800 ✗ |
 | Aviso informativo en línea (estados.md) | radio 12, fondo `azulFondo` al 70 %, borde `azulBordeSuave`, padding h16 v10, ícono `info_outline` 15 `azul`, texto 13 `grisTexto` | `traslado.dart:183-198` (radio 10, 11.5 `ink`, sin borde) ✗; `indicaciones.dart:228-236` (sin borde, `ink`) ✗ casi; avisos grises `0xFFF8FAFC`: `roster.dart:532-539`, `nueva_solicitud.dart:228-238` ✗ |
 | Advertencia en línea | radio 12, fondo `ambarFondo`, borde `ambarBorde`, padding 16, texto 13 `ink` | `CampyCard` `naranjaFondo` (`mi_area.dart:377-391`, `emergencia.dart:287-294`, `nueva_solicitud.dart:197-210`) ✗ tono; `AvisoCaja` `acceso.dart:38-51` |
 | Sin conexión / datos guardados | advertencia en línea compacta (padding h16 v6, 12 `ambar`) **[propuesta]** | franja `naranja` `home.dart:82-89`; textos naranjas sueltos `traslado.dart:122-127`, `chofer.dart:254` ✗ |
@@ -367,7 +560,7 @@ con borde), salvo el micrófono mientras graba. Alto común 48.
   huella o contraseña) salen bien, el botón se angosta hasta ser un círculo azul (0–0,35), viaja al centro (0,3–0,62)
   y en su lugar se despliega el aro (0,55–0,95), mientras una hoja blanca sube (desde la hoja del ingreso o desde el
   borde de abajo en el desbloqueo); sigue el arranque claro. 1,1 s. La animación nunca impide entrar.
-- **Pantalla de ingreso** [D, Agustín 21/10/2026]: cabecera navy con el logo y el selector de idioma (píldora blanco al
+- **Pantalla de ingreso** [D, Agustín 21/10/2026; **30/10: ver «Vigente al 4/11/2026» › Login**]: cabecera navy con el logo y el selector de idioma (píldora blanco al
   8 % con borde al 18 %, radio 12, bandera 24×18 y el código en mayúsculas «ES», «EN», «KO», «ZH», 15 w600, sin
   flecha; el lector de pantalla dice el nombre completo); hoja blanca de radio 24 con los campos, «¿Olvidaste tu
   contraseña?» a la derecha de la etiqueta Contraseña, el botón y debajo «¿Necesitás ayuda?» y «Contactar a Soporte»
@@ -414,6 +607,15 @@ Lo que no está activo se oculta o se muestra como «Próximamente»; nunca se m
 10. Íconos lucide; fondo blanco; barras de avance sobre `grisFondo` (`#F1F5F9`).
 11. Textos con mayúscula inicial; códigos cortos enteros en mayúscula («ES»).
 12. Animaciones: respetan «reducir movimiento» y nunca traban la navegación ni impiden entrar.
+13. Texto completo: ni `TextOverflow.ellipsis` ni «...» ni paréntesis; nada cortado con letra 1,5; meses enteros.
+14. Letra con `LetraCampy`; negrita solo en títulos de bloque y el dato principal.
+15. Pop-ups cortos (título + una oración); avisos con `avisoCampy`, nunca `SnackBar` ni banner.
+16. Sin flechas de ruta («A a B» o `Recorrido`); horas «14:00hs» donde ya rige.
+17. Sin zócalos; filas tocables entre filas que informan con `>`; tarjetas sueltas sin botón ni `>`.
+18. Pantalla de servicio con `PantallaServicioAzul` (arco y piso solo en Transporte; hoja que no sube sola ni de más).
+19. El mismo componente para todos los perfiles (chofer y pasajero, mucama y encargado); probado en sitio, descanso y sin
+    roster.
+20. Nada de gestión administrativa en la app (salvo el supervisor); un solo QR por persona; la barra de abajo intacta.
 
 ## Rediseño 17/10/2026 (rama `agustin/worker-app-rediseno`)
 

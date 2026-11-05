@@ -5,8 +5,9 @@ description: Sistema de diseño del frontend de Campy (For Operators y For Provi
 
 # Diseño del frontend de Campy
 
-Última revisión: 2026-10-26 (alineada con la Worker App del PR #217, el dashboard de Food de campyprov y Shift de
-campisoft en `origin/main`). La actualiza «Cómo aprende esta skill», al final.
+Última revisión: 2026-11-04 (alineada con la Worker App de las ramas del 3 y 4/11, v1.53 a v1.62: pantallas azules
+de servicio, Mi roster con Jornadas, Mi Área global, Comedor, Lavandería, Mi traslado y hotelería; el dashboard de Food
+de campyprov y Shift de campisoft en `origin/main`). La actualiza «Cómo aprende esta skill», al final.
 
 **Las referencias son tres pantallas** [D, Agustín 16/10/2026]. Marcan el lineamiento de **todo** el diseño de Campy
 (web de los dos repos y Worker App). Ante cualquier conflicto (entre la maqueta móvil, otras pantallas web o esta
@@ -38,11 +39,15 @@ Stack: React 18 + Tailwind 3 + lucide-react 0.408 + Recharts. Fuente Inter varia
 
 ## Worker App (móvil)
 
-**Lo último de la app (19–21/10/2026)**, con el detalle en [references/mobile.md](references/mobile.md) › «Composición»:
-letra un 13 % más chica (`escalaLetraCampy = 0.87`) con el tamaño del teléfono acotado a 1,1×; barra inferior navy
-flotante con un corte en U bajo Cori que se cierra y se contrae cuando Cori sube; Cori con vida (`CoriVivo`: gestos de
-ojos, flota, vuela entre la barra y su pantalla); arranque con el aro del logo (`ArranqueCampy`); ingreso y desbloqueo
-que convierten el botón en el aro (`BotonAlAro`); estados «en camino» centrados; Servicios, Mi Área y Cori sin cabecera.
+**Lo último de la app (27/10 al 4/11/2026)**, con el detalle en [references/mobile.md](references/mobile.md) › «Vigente al
+4/11/2026» (manda sobre lo viejo de ese archivo): una escala de letra (`LetraCampy`) y la letra del teléfono de 0,85 a
+1,5; **Inicio = tablero del trabajador** (turno con la foto, Jornada con marcar ingreso y salida, Traslado); **Servicios
+en mosaicos blancos con un solo azul Campy**; cada servicio abre una **pantalla azul** (azul arriba con el dibujo y la luz
+de la hora, hoja blanca abajo, credencial tipo Wallet al pie) armada con `PantallaServicioAzul`; **Mi Área con un diseño
+global** (secciones con título y carrusel de tarjetas, igual para todos los roles); Mi roster con «Mi ciclo», «Jornadas» y
+«Solicitudes»; avisos como **pop-up** (`avisoCampy`), nunca banner; un solo escáner de QR; volver en dos formas según el
+fondo. Antes (19–21/10): barra inferior navy con corte en U bajo Cori, `CoriVivo`, `ArranqueCampy`, `BotonAlAro`, «en
+camino» centrado.
 
 **Contenedores de la app: blanco y secciones** [D, Agustín 17/10/2026]: la app NO copia el panel gris con
 tarjetas blancas de la web (se veía «app vieja»). Fondo blanco; los bloques son secciones sin caja separadas por
@@ -67,17 +72,24 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
 - **Algo que no está acá** (un patrón nuevo, o dos estilos que no cubre la guía): preguntale al usuario antes
   de inventar uno y, si lo decide, agregalo a esta skill (ver «Cómo aprende esta skill»).
 
+**Cómo trabaja el diseño Agustín** (Worker App, desde el 26/10/2026):
+- **Maqueta antes de código** cuando cambia la composición: tablero en el lienzo de maquetas
+  (https://claude.ai/artifact/T9qYd6rPcpRWqgRhFUNtWQ, con `canvas.json` publicado y `is_interactive: true`) o HTML en
+  `~/Escritorio/laburo/maquetas-worker-app/<módulo>/`, con dos o tres variantes; él elige y recién ahí va Flutter.
+  Los ajustes chicos se aplican directo.
+- **Inspiración** en su carpeta de Drive (`1b87oWtwZvonaYP80Wf08TjPTAj9kBLbM`: lavandería, dashboard, transporte, QR,
+  pases) y **animaciones de referencia** en `~/Escritorio/laburo/campy-animations/` (GIF/MP4): se adaptan a Campy y se
+  traducen a código (`CustomPainter`/`AnimationController`), nunca se copian ni se embeben. Rive se probó y se descartó
+  (3/11). Los dibujos de los servicios son recortes de sus imágenes, no vectores propios.
+- **Lo que marca en rojo en una captura sin texto es para sacar** (con sus claves de idioma huérfanas); si la marca viene
+  con un texto, manda el texto.
+- **Sin capturas automáticas** del visor: él mira a ojo y manda captura; se recarga el visor y se avisa qué mirar.
+
 ## Reglas que no se negocian
 
 1. **Nada inventado.** Sin dato → «Sin datos» o «—». En gráficos, un día sin registro es `null`, nunca `0`.
 2. **Todo texto con `t()`** en es, en, ko y zh-CN, incluidos `title`, `aria-label` y textos de estado vacío.
 3. **Sin aclaraciones entre paréntesis en la UI:** título + descripción aparte. La descripción es **una sola oración
-   simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
-   la planificación.» [D, 16/10/2026] La descripción es **una sola oración
-   simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
-   la planificación.» [D, 16/10/2026] La descripción es **una sola oración
-   simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
-   la planificación.» [D, 16/10/2026] La descripción es **una sola oración
    simple**, sin incisos entre comas («, por ejemplo …,»): «Un escenario simula un cambio en la demanda sin modificar
    la planificación.» [D, 16/10/2026]
 4. **No se muestra lo que la API rechaza** (permisos): no se deshabilita, se oculta.
@@ -89,13 +101,10 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
    propio decorativo (como los de [F]: ámbar, sky, violeta, teal, rojo, esmeralda) [D, Agustín 21/10/2026].
    **El violeta ya no es exclusivo de IA** [D, Agustín 17/10/2026]: lo usan Campy AI, el estado `INFO_REQUERIDA` de
    solicitudes de Shift, el color de servicio de Bienestar y la «versión» de un esquema de Shift [D, Agustín 21/10/2026].
+   **En la Worker App lo que va en progreso usa una escala de azules** (lo hecho en blue-200/300, lo de ahora en el
+   azul Campy, lo que viene en gris claro; `azulEscala1..3`) y los servicios **no tienen color propio**: todo en el azul
+   Campy [D, Agustín 28 y 30/10/2026].
 7. **Anillos y arcos con puntas redondeadas y separación entre tramos.**
-8. **El placeholder de un buscador nunca termina en «…» ni «...»:** «Buscar servicio», no «Buscar servicio…». En los
-   cuatro idiomas. [D, 15/10/2026]
-8. **El placeholder de un buscador nunca termina en «…» ni «...»:** «Buscar servicio», no «Buscar servicio…». En los
-   cuatro idiomas. [D, 15/10/2026]
-8. **El placeholder de un buscador nunca termina en «…» ni «...»:** «Buscar servicio», no «Buscar servicio…». En los
-   cuatro idiomas. [D, 15/10/2026]
 8. **Ningún placeholder termina en «…» ni «...»:** ni el de un buscador («Buscar servicio», no «Buscar servicio…») ni
    el de ningún otro campo para escribir («Escribí tu pregunta», no «Escribí tu pregunta…»), en la web y en la app y en
    los cuatro idiomas [D, 15 y 19/10/2026].
@@ -115,6 +124,11 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     «Solicitar ayuda», «Reportar en Connect», «Reservar →»): se tocan enteras. **En un listado, las filas que se pueden
     tocar y llevan a algún lado sí llevan `>`** (Perfil «Más», Configuración, teléfonos, actividades) [D, Agustín 26/10/2026].
     Quedan las acciones reales, los botones de pantalla y los ‹ › de mes.
+    **Toda fila que hay que distinguir como tocable entre filas que solo informan lleva el `>` gris** («Punto de
+    encuentro» de Mi traslado, solicitudes de Mi roster, incidencias de Lavandería); se probaron y se descartaron una
+    miniatura del mapa, una pastilla, un círculo y un fondo [D, Agustín 2/11/2026]. `FilaServicio` lo pone solo cuando hay
+    `onTap`. **Las opciones de un pop-up que llevan al paso siguiente no llevan nada a la derecha** (ni `>`, ni flecha,
+    ni círculo de elegir); el círculo con tilde queda para elegir de una lista [D, Agustín 30/10/2026].
     **Sin «+» delante del texto** tampoco en Shift ni Turnos («Nueva asignación»); el «+ Nueva asignación» de Operators es
     un desvío [D, Agustín 26/10/2026].
 12. **Íconos en recuadro con un solo formato** [D, Agustín 19/10/2026] (Worker App): cuadrado redondeado (radio 24 % del
@@ -123,11 +137,15 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
 13. **Soporte = auriculares** [D, Agustín 19/10/2026]: todo acceso a soporte o asistencia (escribir a soporte, pedir
     ayuda, mesa de ayuda) usa el ícono de auriculares (`headset` de lucide), nunca el sobre ni el signo de pregunta.
     El signo de pregunta queda para «informar un problema» de un servicio.
-14. **Cabeceras de la Worker App** [D, Agustín 19 y 21/10/2026]: la campana va **solo en Inicio** (con el avatar y
-    el saludo). Servicios, Mi Área y Cori van **sin cabecera**: el contenido arranca bajo la barra de estado y el título
+    También va como **ayuda**: un «?» chico junto a un dato abre un pop-up con su regla (Lavandería › «Mi cupo»)
+    [D, Agustín 3/11/2026].
+14. **Cabeceras de la Worker App** [D, Agustín 19 y 21/10/2026; 30/10 y 1/11]: la campana va **solo en Inicio** (con
+    el avatar, **el nombre arriba grande y el saludo según la hora debajo, chico y gris** [D, 1/11], y a la izquierda de la
+    campana el círculo rojo de ayuda urgente [D, 30/10]). Servicios, Mi Área y Cori van **sin cabecera**: el contenido arranca bajo la barra de estado y el título
     queda solo para el lector de pantalla. Perfil lleva una franja navy con la identidad y la tarjeta de accesos
-    montada. Pantallas a las que se entra: volver y el título centrado, nada a la derecha salvo una acción propia; sobre
-    navy (`sobreNavy`) cuando la pantalla es navy, como el pase.
+    montada. Pantallas a las que se entra: volver y el título centrado, nada a la derecha salvo una acción propia. **Volver tiene dos
+    formas según el fondo** (`BotonVolver`) [D, Agustín 1/11/2026]: sobre blanco o gris, círculo blanco de 44 con sombra
+    suave e ícono en tinta; sobre azul o navy, solo la flecha blanca. Chevron en iPhone, flecha en Android.
 15. **Mayúscula inicial** [D, Agustín 21/10/2026]: todo texto de pantalla empieza con mayúscula, en la web y en la app.
     Los códigos cortos van enteros en mayúscula («ES», «EN», «KO», «ZH»). Lo que va después de « · » también empieza
     con mayúscula («4/6 · Faltan ítems») y el mes de una fecha va con mayúscula también en la web («15 de Octubre»)
@@ -145,14 +163,65 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     secciones de Rosters. En Providers, Turnos conserva la sección **Excepciones** (Operators la sacó): es la única
     forma de cargar un cambio de horario de un día puntual. También conserva lo que Operators sacó y Providers ya tenía: esquemas rotativos y fijos, reglas
     por dotación o puesto, editar vigencia y contraturno, y reactivar esquemas [D, Agustín 26/10/2026].
-16. **Letra de la Worker App** [D, Agustín 20/10/2026]: se dibuja un 13 % más chica que lo escrito
-    (`escalaLetraCampy = 0.87`) y el tamaño de letra del teléfono se respeta entre 1,0 y 1,1×. No se compensa a mano.
+16. **Letra de la Worker App** [D, Agustín 20/10 y 30/10/2026]: se dibuja un 13 % más chica que lo escrito
+    (`escalaLetraCampy = 0.87`) y **una sola escala para toda la app menos el login** (`LetraCampy` en `theme.dart`:
+    número grande 42, número 24, saludo 20, sección 17, título 14, texto 13, chico 11,5). El tamaño de letra del teléfono
+    se respeta **entre 0,85 y 1,5×** (antes 1,0–1,1). No se compensa a mano: si algo no entra, el componente crece.
 17. **Animaciones** [D, Agustín 21/10/2026]: respetan «reducir movimiento» del teléfono (quietas o un fundido) y
     **nunca traban la navegación ni impiden entrar**: si una animación falla, la acción sigue sin ella.
 19. **Nada de anotaciones de relleno** [D, Agustín 26/10/2026]: no se muestra de dónde sale un dato ni quién lo
     cargó («Cargada por tu empresa», «Recepción a cargo de la minera según…»), ni aclaraciones de alcance o del sistema
     («Solo por tipo», «Solo el cocinero declara»), ni el mismo dato dos veces (chip «Vencida hace 3 días» y además
     «Venció el 23 de Octubre»). Cada pantalla muestra solo lo que la persona necesita para actuar; ante la duda, se saca.
+20. **Texto completo: sin «...», sin paréntesis, nada cortado** [D, Agustín 28/10/2026]. Ningún texto de pantalla
+    termina en puntos suspensivos (en la app, nunca `TextOverflow.ellipsis`; en la web, nada de `truncate` en un dato
+    que la persona necesita leer), ninguno lleva palabras entre paréntesis (se reescribe con « · » o en otra frase) y
+    nada se corta: si no entra, baja de línea y el componente crece (o se achica un poco la letra antes de cortar).
+    Meses y días enteros («Noviembre», no «Nov»). Un carrusel que deja asomar la tarjeta siguiente no es un corte. Las
+    tarjetas de una misma fila, del mismo alto (manda la más alta).
+21. **Pop-ups cortos** [D, Agustín 28/10/2026]: título corto y como mucho **un detalle de una oración, ~60 caracteres**
+    (dos líneas en un cuadro de 342). Lo que no hace falta para decidir, afuera; las instrucciones largas van en la
+    pantalla. Vale para todo pop-up nuevo, en la app y en la web; uno viejo con un párrafo se acorta en los cuatro
+    idiomas cuando se toca. Un pop-up de ayuda («?») es solo el título y una oración, sin ícono ni mosaicos [D, 3/11].
+22. **Todo mensaje emergente es un pop-up de Campy, nunca un banner ni una barra** [D, Agustín 2/11/2026] (Worker App:
+    `avisoCampy(context, texto, tono:)` en `widgets/ui.dart`; nada de `SnackBar` ni `ScaffoldMessenger`). Única excepción:
+    el «Guardado» de 1 s del autoguardado de la OT. **Lo que falló y sigue abierto** (una incidencia, un rechazo del
+    encargado) tampoco va en un recuadro rojo en la hoja: sale en un pop-up al entrar a la pantalla, se va al cerrarlo
+    y vuelve a salir en cada entrada mientras siga abierto [D, Agustín 4/11/2026]. Una confirmación continua (el pase del
+    embarque por QR) va dentro de la pantalla, no en pop-up.
+23. **Nunca flechas de ruta** [D, Agustín 29/10/2026]: ningún «→», «->», «>» ni «➜» entre origen y destino en un texto de
+    pantalla. En una línea, «ALFA Norte a Salta» (clave `comunRuta`, «{origen} a {destino}»); con lugar, el widget
+    `Recorrido` (círculo vacío, línea de puntos, círculo lleno). Tampoco en caminos de navegación («Servicios →
+    Alojamiento» se escribe con palabras) ni en las maquetas.
+24. **Horas con «hs» y fecha entera** [D, Agustín 29/10/2026]: «14:00hs» (`comunHoraHs`; solo el español lleva el
+    sufijo), duraciones «4hs», «1hs 20 min» (`duracionTextoHs`) y la fecha con el día y el mes enteros («Viernes 6 de
+    Noviembre», `fechaConDia`). Ya rige en Mi traslado, su tarjeta de embarque, Notificaciones («19:01hs») y
+    Lavandería («Lista desde hoy 07:42hs»). `[pendiente]` si es regla de toda la app (Inicio, Servicios, Comedor, Mi
+    roster y `duracionTexto`): preguntar antes de extenderlo.
+25. **Sin zócalos** [D, Agustín 31/10/2026]: ninguna tarjeta ni fila lleva una barra de color pegada al borde izquierdo.
+    Se distingue con el fondo (celeste lo destacado, blanco con borde fino lo demás), con el color del texto o con la
+    palabra del estado. En la app, en el lienzo y en la web nueva.
+26. **Negrita solo para los títulos importantes** [D, Agustín 3/11/2026]: el título de un bloque («Mi cupo»,
+    «Incidencias») y el dato grande que se busca primero («6 prendas listas», «Módulo B»). Rótulos, valores de lectura
+    (fechas, números de orden, cupo), el texto de las filas y los estados van sin negrita (400/500). El valor de toda
+    grilla de datos (`DatosServicio.valorDato`) es regular. Se ajusta cada pantalla cuando se toca.
+27. **Una pieza igual se ve igual en todos los perfiles** [D, Agustín 17/10 y 2/11/2026]: chofer, pasajero, supervisor,
+    mucama o técnico ven la misma pantalla de servicio con el mismo componente (`ArcoRuta`, `PuntaRuta`,
+    `PantallaServicioAzul`, `EncabezadoChapa`, `FilaServicio`, `TarjetaCarrusel`); si a un rol le falta algo, se agrega un
+    parámetro al componente común, nunca una copia parecida. Y todo cambio de la app vale para todas las fases (en sitio,
+    llegada, descanso, sin roster), roles y categorías, propios y contratistas.
+28. **La app del trabajador marca y mira; la gestión es de la web** [D, Agustín 28/10 y 2/11/2026]. Marcar ingreso y
+    salida, ejecutar (una OT, un viaje, una limpieza), escanear y mirar su ciclo, servicios y solicitudes. Cerrar o
+    reabrir ciclos, DAE/DAP, ajustes del campamento, crear OT o planificar: web. No se diseñan pantallas de procesos
+    administrativos en la app. **Excepción desde el 4/11/2026: el supervisor sí resuelve y gestiona desde la app** lo de su
+    equipo (solicitudes, aprobar o rechazar una limpieza).
+29. **La barra de abajo de la app no se cambia** [D, Agustín 29/10/2026]: la de `screens/shell.dart` (cinco íconos, la
+    elegida en un círculo sin texto, Cori al medio) queda como está. Si una maqueta dibuja otra barra (con el nombre de
+    la pestaña elegida, con difuminado), es de la maqueta y no pasa al código sin que Agustín lo pida.
+30. **Un QR por persona** [D, Agustín 28/10/2026]: la credencial de la app (la que rota y muestra «Mi QR») sirve para
+    todo: embarcar, hospedaje, lavandería, comedor, vianda, actividades. Nunca se diseña un QR por orden, viaje o reserva;
+    las «credenciales» de cada servicio (Lavandería, Comedor) muestran ese mismo QR con los datos de ese servicio. El
+    código de barras Code 128 del ticket de equipaje no es una credencial y sí va.
 
 ## Lo esencial de un vistazo
 
@@ -205,7 +274,8 @@ La skill se autoevalúa y se corrige sola, en tres momentos. No es opcional: es 
    buscan en `$CAMPISOFT` y `$CAMPYPROV`, por defecto `~/Escritorio/laburo/campisoft` y `~/Escritorio/laburo/campyprov`;
    para mirar una rama: `--campisoft /ruta --campisoft-ref HEAD`). Reporta rutas que la skill cita y
    ya no existen, desvíos de las reglas en el código (chips con punto, botones con flecha, placeholders con «…»,
-   `campy-blue`, Material prohibido, minúsculas), pantallas de referencia que cambiaron después de «Última revisión» y
+   `campy-blue`, Material prohibido, minúsculas, y en la app textos cortados con «...», `ScaffoldMessenger`, paréntesis
+   y flechas de ruta), pantallas de referencia que cambiaron después de «Última revisión» y
    aprendizajes pendientes. Leer el informe antes de diseñar: si una referencia cambió, mirar el cambio y actualizar la
    skill antes de copiar de ella.
 2. **Durante:** cada corrección o decisión de diseño del usuario («así no», «va con mayúscula», «sacá el hueco») se
