@@ -14,7 +14,7 @@ Si el diff toca `worker-app/`, recorré además el checklist de [mobile.md](mobi
 - [ ] Texto completo: sin «...» en un dato que hay que leer, sin palabras entre paréntesis, nada cortado; meses enteros (regla 20).
 - [ ] Pop-ups: título corto y un detalle de una oración (~60 caracteres) (regla 21).
 - [ ] Sin flechas de ruta entre origen y destino («A a B») ni en caminos de navegación (regla 23).
-- [ ] Worker App: horas «14:00hs», duraciones «4hs» y fechas enteras («Viernes 6 de Noviembre»), nunca «Nov» (regla 24).
+- [ ] Horas «14:00hs», duraciones «4hs» y fechas enteras («Viernes 6 de Noviembre»), nunca «Nov» ni `month: 'short'` (regla 24).
 - [ ] Sin zócalos (barra de color en el borde izquierdo de una tarjeta o fila) (regla 25).
 - [ ] Negrita solo en títulos de bloque y el dato principal; rótulos, valores, filas y estados sin negrita (regla 26).
 - [ ] Nada de anotaciones de relleno ni el mismo dato dos veces (regla 19).

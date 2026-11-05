@@ -3,7 +3,7 @@
 # ~/.claude/skills/campy-diseno. Así la skill puede anotar lo que aprende y esos cambios
 # se commitean al repo. (Instalada como plugin queda en una caché de solo lectura.)
 #
-#   gh repo clone ajuarez-campy/campy-diseno ~/.claude/campy-diseno && ~/.claude/campy-diseno/install.sh
+#   git clone https://github.com/ajuarez-campy/campy-diseno.git ~/.claude/campy-diseno && ~/.claude/campy-diseno/install.sh
 #   ./install.sh                      # desde un clon ya hecho (usa ese clon)
 #   CAMPY_DISENO_DIR=~/otra/ruta ./install.sh
 set -euo pipefail

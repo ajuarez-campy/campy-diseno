@@ -73,10 +73,11 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
   de inventar uno y, si lo decide, agregalo a esta skill (ver «Cómo aprende esta skill»).
 
 **Cómo se decide el diseño en Campy** (para todo el equipo):
-- **El lineamiento lo define Agustín** (líder de frontend). Las reglas marcadas `[D, Agustín dd/mm/aaaa]` ya están
+- **El lineamiento lo define Agustín** (líder de frontend). Las reglas marcadas `[D, nombre dd/mm/aaaa]` ya están
   decididas y valen para todos: no se discuten en un PR ni se cambian por gusto. Si una regla te traba, se le plantea a él.
-- **Lo que no está en la skill se pregunta antes de codificar**, no se inventa ni se copia de otra pantalla que «se ve
-  parecida». Lo que él decide se suma a la skill (ver «Cómo aprende esta skill»).
+- **Lo que no está en la skill se acuerda antes de codificar**, no se inventa ni se copia de otra pantalla que «se ve
+  parecida». Una vez acordado, quien lo trabajó lo suma a la skill con su nombre y la fecha (ver «Cómo aprende esta
+  skill»): si alguien agrega un diseño a la skill es porque ya tiene el visto bueno.
 - **Maqueta antes de código** cuando cambia la composición de una pantalla (qué bloques, en qué orden): dos o tres
   variantes en HTML para que Agustín elija; recién después se pasa a React o a Flutter. Los ajustes chicos (un color,
   un texto, un margen) van directo.
@@ -195,13 +196,15 @@ solo donde las tres referencias no dicen nada; en los valores mandan las tres re
     pantalla. En una línea, «ALFA Norte a Salta» (clave `comunRuta`, «{origen} a {destino}»); con lugar, el widget
     `Recorrido` (círculo vacío, línea de puntos, círculo lleno). Tampoco en caminos de navegación («Servicios →
     Alojamiento» se escribe con palabras) ni en las maquetas.
-24. **Horas con «hs» y fecha entera, en toda la Worker App** [D, Agustín 29/10 y 4/11/2026]. Toda hora lleva «hs»
+24. **Horas con «hs» y fecha entera, en la Worker App y en la web** [D, Agustín 29/10 y 4/11/2026]. Toda hora lleva «hs»
     pegado: «14:00hs» (`comunHoraHs`; solo el español lleva el sufijo, los otros idiomas muestran la hora sola); toda
     duración, «4hs», «1hs 20 min» (`duracionTextoHs`, no `duracionTexto`). Toda fecha va con el día y el mes enteros:
     «Viernes 6 de Noviembre», «6 de Noviembre» (`fechaConDia` o `fmtFecha` sin `corta`); nunca «Nov», «Vie» ni
     `fmtFecha(…, corta: true)`. Si la fecha entera no entra, se reubica en otra línea (regla 20), no se abrevia. Solo
-    quedan cortos los encabezados de columna de un calendario (Lun…Dom). En la web: `[pendiente]` confirmar con
-    Agustín si también lleva «hs».
+    quedan cortos los encabezados de columna de un calendario (Lun…Dom). En la web, lo mismo: la hora con el sufijo
+    desde la clave de idioma (en español «14:00hs», en los otros idiomas la hora sola), la duración con «hs» y la fecha
+    con `localeUi()` y `month: 'long'` (más `weekday: 'long'` donde va el día), con el mes en mayúscula (regla 15); nada
+    de `month: 'short'`. Lo que ya existe con hora sola o mes corto es un desvío a corregir cuando se toca la pantalla.
 25. **Sin zócalos** [D, Agustín 31/10/2026]: ninguna tarjeta ni fila lleva una barra de color pegada al borde izquierdo.
     Se distingue con el fondo (celeste lo destacado, blanco con borde fino lo demás), con el color del texto o con la
     palabra del estado. En la app, en el lienzo y en la web nueva.
@@ -275,8 +278,7 @@ La skill se autoevalúa y se corrige sola, en tres momentos. No es opcional: es 
 
 1. **Al empezar** una tarea de diseño o una revisión, correr la autoevaluación desde la carpeta de esta skill:
    `python3 scripts/autoevaluar.py` (lee `origin/main` de los dos repos sin tocar las copias de trabajo; los repos se
-   buscan en `$CAMPISOFT` y `$CAMPYPROV`, por defecto `~/Escritorio/laburo/campisoft` y `~/Escritorio/laburo/campyprov`: si tus clones están en otro
-   lado, exportá esas dos variables;
+   buscan en `$CAMPISOFT` y `$CAMPYPROV`, si no están, el script los busca en `~/Escritorio/laburo/`, `~/`, `~/code/`, `~/projects/` y al lado de esta carpeta;
    para mirar una rama: `--campisoft /ruta --campisoft-ref HEAD`). Reporta rutas que la skill cita y
    ya no existen, desvíos de las reglas en el código (chips con punto, botones con flecha, placeholders con «…»,
    `campy-blue`, Material prohibido, minúsculas, y en la app textos cortados con «...», `ScaffoldMessenger`, paréntesis
@@ -286,9 +288,8 @@ La skill se autoevalúa y se corrige sola, en tres momentos. No es opcional: es 
 2. **Durante:** cada corrección o decisión de diseño del usuario («así no», «va con mayúscula», «sacá el hueco») se
    anota **en el momento** en [references/aprendizajes.md](references/aprendizajes.md) (fecha, qué, origen, dónde
    quedó) y se lleva a la regla, pieza o token que corresponde en el mismo turno, con `[D, usuario dd/mm/aaaa]`.
-   Lo que el usuario no decidió queda `[pendiente]` y se le pregunta; nunca se elige por cuenta propia. **Si quien usa la
-   skill no es Agustín**, su decisión se anota `[pendiente: confirmar con Agustín]`, salvo que diga que ya lo acordó con
-   él (entonces `[D, Agustín dd/mm/aaaa]` y de dónde salió). Si tenés el vault de producto de Campy, la decisión va
+   Lo que el usuario no decidió queda `[pendiente]` y se le pregunta; nunca se elige por cuenta propia. Lo decide quien usa la
+   skill, sea quien sea del equipo: se anota con su nombre (`[D, Mateo 5/11/2026]`), sin pedir otra confirmación. Si tenés el vault de producto de Campy, la decisión va
    también a `02 - Decisiones/Registro de decisiones.md`.
 3. **Al terminar:** revisar lo hecho contra la skill. Si se usó un valor, una pieza o un patrón que la skill no tenía,
    o si la skill dijo algo que el código o el usuario desmintieron, corregir la skill, sumar la entrada en

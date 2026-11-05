@@ -115,5 +115,7 @@ Estados: `[incorporado]` (ya está en la skill), `[pendiente]` (falta que el usu
 - 2026-11-03 · [incorporado] · Animaciones de referencia (carpeta campy-animations) traducidas a código: QR escaneado y partida del viaje; Rive descartado · Agustín · SKILL.md › Cómo se decide el diseño en Campy, mobile.md
 - 2026-11-04 · [incorporado] · El supervisor sí resuelve y gestiona desde la app (cambia la regla del 2/11) · Agustín · SKILL.md regla 28
 - 2026-11-04 · [incorporado] · Lo que falló y sigue abierto sale en un pop-up al entrar a la pantalla, no en un recuadro rojo en la hoja · Agustín · SKILL.md regla 22
-- 2026-11-04 · [incorporado] · «hs» en toda hora y fecha entera en toda la Worker App (antes solo en Mi traslado); la tarjeta del turno ya no usa la fecha corta · Agustín · SKILL.md regla 24 · [pendiente] si la web también lleva «hs»
-- 2026-11-04 · [incorporado] · La skill es también para el equipo: sin rutas ni enlaces personales; «Cómo se decide el diseño en Campy»; lo que decide otra persona queda `[pendiente: confirmar con Agustín]` · Agustín · SKILL.md, mobile.md, README.md
+- 2026-11-04 · [incorporado] · «hs» en toda hora y fecha entera en toda la Worker App (antes solo en Mi traslado); la tarjeta del turno ya no usa la fecha corta · Agustín · SKILL.md regla 24 → decidido por Agustín 4/11: la web también
+- 2026-11-04 · [incorporado] · La skill es también para el equipo: sin rutas ni enlaces personales; «Cómo se decide el diseño en Campy»; quien agrega un diseño ya tiene el visto bueno y lo firma con su nombre (4/11, reemplaza «[pendiente: confirmar con Agustín]») · Agustín · SKILL.md, mobile.md, README.md
+- 2026-11-04 · [incorporado] · «hs» y fecha entera también en la web · Agustín · SKILL.md regla 24, checklist.md
+- 2026-11-04 · [incorporado] · El repo es público: README sin pasos de acceso privado; el script encuentra los repos de Campy en las carpetas más comunes · Agustín · README.md, autoevaluar.py

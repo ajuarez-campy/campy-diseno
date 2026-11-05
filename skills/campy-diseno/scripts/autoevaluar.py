@@ -179,10 +179,22 @@ def seccion(titulo: str, filas: list[str], vacio: str = "Nada.", tope: int = 25)
     return f"### {titulo} ({len(filas)})\n{cuerpo}\n"
 
 
+def repo_por_defecto(nombre: str, variable: str) -> Path:
+    """La variable de entorno manda; si no, el primer clon que exista en las carpetas más comunes."""
+    if os.environ.get(variable):
+        return Path(os.environ[variable]).expanduser()
+    lugares = [HOME / "Escritorio/laburo", HOME, HOME / "code", HOME / "projects",
+               Path(__file__).resolve().parents[4] if len(Path(__file__).resolve().parents) > 4 else HOME]
+    for base in lugares:
+        if (base / nombre / ".git").exists():
+            return base / nombre
+    return HOME / "Escritorio/laburo" / nombre
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--campisoft", type=Path, default=Path(os.environ.get("CAMPISOFT", HOME / "Escritorio/laburo/campisoft")))
-    ap.add_argument("--campyprov", type=Path, default=Path(os.environ.get("CAMPYPROV", HOME / "Escritorio/laburo/campyprov")))
+    ap.add_argument("--campisoft", type=Path, default=repo_por_defecto("campisoft", "CAMPISOFT"))
+    ap.add_argument("--campyprov", type=Path, default=repo_por_defecto("campyprov", "CAMPYPROV"))
     ap.add_argument("--campisoft-ref", default="origin/main")
     ap.add_argument("--campyprov-ref", default="origin/main")
     ap.add_argument("--sin-fetch", action="store_true")
@@ -196,7 +208,7 @@ def main() -> int:
     docs = textos_skill()
     arbol = [f for repo, ref in repos.values() for f in archivos(repo, ref)]
     if not arbol:
-        print("No pude leer los repos: revisá --campisoft / --campyprov.", file=sys.stderr)
+        print("No pude leer los repos de Campy: pasá --campisoft / --campyprov o exportá CAMPISOFT y CAMPYPROV.", file=sys.stderr)
         return 0
     desde = fecha_revision(docs.get(SKILL / "SKILL.md", ""))
 

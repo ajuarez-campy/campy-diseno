@@ -21,24 +21,25 @@ web y en la Worker App, la haga quien la haga. Lo define Agustín (líder de fro
 - **Antes de diseñar o revisar una pantalla**, Claude la carga sola; si trabajás sin Claude, leé las «Reglas que no se
   negocian» de `skills/campy-diseno/SKILL.md` y, para la app, «Vigente al 4/11/2026» en `references/mobile.md`.
 - **Revisar un PR de UI:** `references/checklist.md` (y el de la app en `mobile.md`).
-- **Lo que no está, se pregunta** a Agustín antes de codificar. Lo que decide otra persona queda anotado como
-  `[pendiente: confirmar con Agustín]` hasta que él lo confirme.
-- **Para proponer un cambio a la skill:** rama propia y PR a este repo, con la decisión y su fecha en
-  `references/aprendizajes.md`.
+- **Lo que no está, se acuerda antes de codificar.** Una vez acordado, quien lo trabajó lo suma a la skill: la regla
+  o la pieza donde corresponde, y una línea en `references/aprendizajes.md` con la fecha y su nombre
+  (`[D, nombre dd/mm/aaaa]`).
+- **Para sumar un cambio a la skill:** con acceso de escritura, commit en español («Aprendizaje: …») y push; sin acceso,
+  un fork y un PR.
 
 ## Instalación
+
+El repo es público: para instalarla no hace falta cuenta ni acceso.
 
 ### Modo editable (recomendado: así la skill puede aprender)
 
 ```bash
-gh repo clone ajuarez-campy/campy-diseno ~/.claude/campy-diseno && ~/.claude/campy-diseno/install.sh
+git clone https://github.com/ajuarez-campy/campy-diseno.git ~/.claude/campy-diseno && ~/.claude/campy-diseno/install.sh
 ```
 
 Deja el clon en `~/.claude/campy-diseno` y enlaza `~/.claude/skills/campy-diseno` a la skill (si había una copia
-suelta, la guarda como respaldo fuera de `~/.claude/skills`). Los aprendizajes
-quedan en ese clon y se suben con `git commit` + `git push`. Para actualizar: `git -C ~/.claude/campy-diseno pull`. Como
-el repo es privado, hace falta acceso a GitHub (`gh auth login` y `gh auth setup-git`, o SSH) y que el dueño te sume
-como colaborador.
+suelta, la guarda como respaldo fuera de `~/.claude/skills`). Para actualizar: `git -C ~/.claude/campy-diseno pull`.
+Los aprendizajes quedan en ese clon; para subirlos hace falta acceso de escritura al repo (o un fork y un PR).
 
 ### Como plugin (solo usar)
 
@@ -50,7 +51,7 @@ En una sesión de Claude Code:
 ```
 
 Instalada así la skill queda en `~/.claude/plugins/cache/` y no se edita (se pisa en cada actualización): propone los
-aprendizajes para que alguien los suba al repo. Para recibir cambios: `/plugin` › Marketplaces › actualizar (o activar
+aprendizajes para que los subas al repo. Para recibir cambios: `/plugin` › Marketplaces › actualizar (o activar
 la actualización automática).
 
 ## Uso
@@ -60,12 +61,12 @@ Claude Code la usa sola al crear, rediseñar o revisar pantallas de Campy, o cua
 
 ```bash
 cd ~/.claude/skills/campy-diseno
-python3 scripts/autoevaluar.py                  # por defecto busca ~/Escritorio/laburo/{campisoft,campyprov}
+python3 scripts/autoevaluar.py                  # busca los clones en ~/Escritorio/laburo, ~, ~/code, ~/projects
 CAMPISOFT=/ruta/campisoft CAMPYPROV=/ruta/campyprov python3 scripts/autoevaluar.py
 python3 scripts/autoevaluar.py --campisoft /ruta/al/worktree --campisoft-ref HEAD   # mirar una rama
 ```
 
-Necesita `python3` y `git`, y los dos repos de Campy clonados.
+Necesita `python3` y `git`, y los dos repos de Campy clonados (son privados: el script solo los lee en tu máquina).
 
 ## Estructura
 
